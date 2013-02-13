@@ -11,7 +11,7 @@ I want to make it easy to use. because I don't like coreData and so many class :
 
 #example for json mapping class
 
-	## JSON file
+## JSON file
 
 	JSON:
 
@@ -23,7 +23,7 @@ I want to make it easy to use. because I don't like coreData and so many class :
 		"text":"hello world come on curer"
 	}
 
-	## Model class 
+## Model class 
 
 	@interface Status : NSObject
 
@@ -39,7 +39,7 @@ I want to make it easy to use. because I don't like coreData and so many class :
 
 	@end
 
-	## how to use mapper 
+## how to use mapper 
 
 	CUJSONMapper *statusMapper = [[[CUJSONMapper alloc] init] autorelease];
     NSDictionary *statusMapping = @{@"user_h.name": @"statusUsername", @"text":@"text"};
