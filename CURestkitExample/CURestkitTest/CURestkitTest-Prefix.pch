@@ -1,0 +1,14 @@
+//
+// Prefix header for all source files of the 'CURestkitTest' target in the 'CURestkitTest' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#import "CUJSONMapper.h"
+#import "JSON.h"
+#import "CUStatus.h"
+#import "CUAdvertisement.h"
+#import "CUCategory.h"
