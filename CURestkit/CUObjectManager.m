@@ -8,13 +8,32 @@
 
 #import "CUObjectManager.h"
 #import "CUJSONMapper.h"
-#import "AFNetworking.h"
+#import "ASIHTTPRequest.h"
 #import "JSON.h"
+#import "ASIDownloadCache.h"
+
+#define HTTP_STATUS_CODE_FAILED     @"httpcodefailed"
+#define PARSE_JSON_FAILED     @"parse json failed"
+
+@implementation NSString (CUObjectManager)
+
+- (NSString *)URLEncodedString
+{
+	return [self URLEncodedStringWithCFStringEncoding:kCFStringEncodingUTF8];
+}
+
+- (NSString *)URLEncodedStringWithCFStringEncoding:(CFStringEncoding)encoding
+{
+	return [(NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[self mutableCopy] autorelease], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"), encoding) autorelease];
+}
+
+@end
 
 @interface CUObjectManager ()
 
 @property (nonatomic, retain) NSMutableDictionary *mapperAtServerPathDictionary;
 @property (nonatomic, retain) NSMutableDictionary *jsonPathAtServerPathDictionary;
+@property (nonatomic, retain) NSMutableDictionary *requestDictionary;
 
 @end
 
@@ -22,9 +41,13 @@
 
 - (void)dealloc
 {
-    self.HTTPClient = nil;
     self.mapperAtServerPathDictionary = nil;
     self.jsonPathAtServerPathDictionary = nil;
+    self.baseURLString = nil;
+    
+    [self cancelAllRequest];
+    
+    self.requestDictionary = nil;
     
     [super dealloc];
 }
@@ -34,10 +57,13 @@
     if (self = [super init]) {
         self.mapperAtServerPathDictionary = [NSMutableDictionary dictionary];
         self.jsonPathAtServerPathDictionary = [NSMutableDictionary dictionary];
+        self.requestDictionary = [NSMutableDictionary dictionary];
     }
     
     return self;
 }
+
+#pragma mark - public
 
 - (void)registerMapper:(CUJSONMapper *)mapper
           atServerPath:(NSString *)serverPath
@@ -49,51 +75,107 @@
 
 - (void)getObjectsAtPath:(NSString *)path
               parameters:(NSDictionary *)parameters
-                 success:(void (^)(AFJSONRequestOperation *jsonOperation, NSArray *objects))success
-                   error:(void (^)(AFJSONRequestOperation *jsonOperation, NSString *errorMsg))errorBlock
+                 success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
+                   error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 {
-    NSMutableURLRequest *
-    request = [self.HTTPClient requestWithMethod:@"GET" path:path parameters:parameters];
+    ASIHTTPRequest *request = [self requestWithPath:path
+                                         parameters:parameters
+                                            success:success
+                                              error:errorBlock];
     
-    __block CUObjectManager *blockSelf = self;
+    [request setCachePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
+    [request setDownloadCache:[ASIDownloadCache sharedCache]];
+    [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
     
-    AFJSONRequestOperation *operation = nil;
-    operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                success:^(NSURLRequest *request,
-                                                                          NSHTTPURLResponse *response,
-                                                                          id jsonObject)
-    {
-        id objects = [CUObjectManager parseObjects:blockSelf withJSON:jsonObject at:path];
-        if (objects != nil) {
-            success(operation, objects);
-        }
-        else
-        {
-            errorBlock(operation, @"parse error");
-        }
-    }
-                                                    failure:^(NSURLRequest *request,
-                                                              NSHTTPURLResponse *response,
-                                                              NSError *error,
-                                                              id JSON)
-    {
-        errorBlock(operation, [error localizedDescription]);
-    }];
-    
-    
-    [self.HTTPClient enqueueHTTPRequestOperation:operation];
-    [operation start];
+    [request startAsynchronous];
 }
 
 - (void)getLocalObjectsAt:(NSString *)path
                parameters:(NSDictionary *)parameters
-                  success:(void (^)(AFJSONRequestOperation *operation, NSArray *objects))success
-                    error:(void (^)(AFJSONRequestOperation *jsonOperation, NSString *errorMsg))errorBlock
+                  success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
+                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 {
-    NSMutableURLRequest *
-    request = [self.HTTPClient requestWithMethod:@"GET" path:path parameters:parameters];
+    ASIHTTPRequest *request = [self requestWithPath:path
+                                         parameters:parameters
+                                            success:success
+                                              error:errorBlock];
     
-    [request setCachePolicy:NSURLRequestReturnCacheDataDontLoad];
+    [request setDownloadCache:[ASIDownloadCache sharedCache]];
+    [request setCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy | ASIFallbackToCacheIfLoadFailsCachePolicy];
+    [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+    
+    [request startAsynchronous];
+}
+
+- (void)cancelAllRequest
+{
+    [self.requestDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        ASIHTTPRequest *request = (ASIHTTPRequest *)obj;
+        [request clearDelegatesAndCancel];
+    }];
+}
+
+- (void)cancelRequestURLString:(NSString *)urlString
+{
+    ASIHTTPRequest *request = [self.requestDictionary objectForKey:urlString];
+    [request clearDelegatesAndCancel];
+}
+
+#pragma mark - private 
+
+- (ASIHTTPRequest *)requestWithPath:(NSString *)path
+                         parameters:(NSDictionary *)parameters
+                            success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
+                              error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
+    NSString *urlString = [CUObjectManager serializeBaseURL:self.baseURLString
+                                                       path:path
+                                                     params:parameters];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                          andPassword:self.HTTPBasicAuthPassword];
+    
+    __block CUObjectManager *blockSelf = self;
+    
+    [request setCompletionBlock:^{
+        [blockSelf.requestDictionary removeObjectForKey:request.url];
+        
+        if (![blockSelf parseHTTPStatusCode:request]) {
+            errorBlock(request, HTTP_STATUS_CODE_FAILED);
+            
+            return;
+        }
+        
+        id jsonObject = [self JSONFromRequest:request];
+        
+        id objects = [CUObjectManager parseObjects:blockSelf withJSON:jsonObject at:path];
+        if (objects != nil) {
+            success(request, objects);
+        }
+        else
+        {
+            errorBlock(request, PARSE_JSON_FAILED);
+        }
+    }];
+    
+    [request setFailedBlock:^{
+        [blockSelf.requestDictionary removeObjectForKey:request.url];
+        
+        errorBlock(request, [[request error] localizedDescription]);
+    }];
+    
+    ASIHTTPRequest *requestInHistory = [blockSelf.requestDictionary objectForKey:request.url];
+    if (requestInHistory != nil) {
+        [requestInHistory clearDelegatesAndCancel];
+        
+        NSLog(@"cancel history request %@", request);
+    }
+    
+    [blockSelf.requestDictionary setObject:request forKey:request.url];
+    
+    return request;
 }
 
 + (NSArray *)parseObjects:(CUObjectManager *)objectManager withJSON:(id)jsonObject at:(NSString *)path
@@ -119,6 +201,53 @@
     }
     
     return objects;
+}
+
+#pragma mark - parse server response
+
+- (BOOL)parseHTTPStatusCode:(ASIHTTPRequest *)request
+{
+    if ([request responseStatusCode] == 200) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (id)JSONFromRequest:(ASIHTTPRequest *)request
+{
+    NSString *response = [request responseString];
+    id jsonObject = [response JSONValue];
+    
+    return jsonObject;
+}
+
+#pragma mark - URL schema
+
++ (NSString *)serializeBaseURL:(NSString *)baseURL path:(NSString *)path params:(NSDictionary *)params
+{
+    NSURL *parsedURL = [NSURL URLWithString:baseURL];
+	NSString *queryPrefix = parsedURL.query ? @"&" : @"?";
+	NSString *query = [self stringFromDictionary:params];
+	
+	return [NSString stringWithFormat:@"%@%@%@%@", baseURL, path, queryPrefix, query];
+}
+
++ (NSString *)stringFromDictionary:(NSDictionary *)dict
+{
+    NSMutableArray *pairs = [NSMutableArray array];
+	for (NSString *key in [dict keyEnumerator])
+	{
+		if (!([[dict valueForKey:key] isKindOfClass:[NSString class]]))
+		{
+			continue;
+		}
+		
+        NSString *param = [dict objectForKey:key];
+		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [param URLEncodedString]]];
+	}
+	
+	return [pairs componentsJoinedByString:@"&"];
 }
 
 @end

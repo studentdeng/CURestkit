@@ -7,6 +7,7 @@
 //
 
 #import "CUAdvertisement.h"
+#import "CUJSONMapper.h"
 
 @implementation CUAdvertisement
 

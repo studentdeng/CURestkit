@@ -11,7 +11,7 @@
 @class CUAdvertisement;
 @class CUCategory;
 @class CUJSONMapper;
-
+@class CUUser;
 @interface CUStatus : NSObject
 
 + (CUJSONMapper *)getObjectMapping;
@@ -36,6 +36,7 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *watchesCount;
+@property (nonatomic, strong) CUUser *user;
 
 @property (nonatomic, strong) NSArray *attachments;
 

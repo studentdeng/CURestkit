@@ -11,29 +11,15 @@
 #import "CUAdvertisement.h"
 #import "CUCategory.h"
 #import "CUJSONMapper.h"
+#import "CUUser.h"
+
+static NSDateFormatter *s_format = nil;
 
 @implementation CUStatus
 
 
 + (CUJSONMapper *)getObjectMapping
 {
-    /*
-    RKObjectMapping *statusMapping = [RKObjectMapping mappingForClass:[CUStatus class]];
-    [statusMapping mapKeyPathsToAttributes:
-        @"id", @"statusID",
-        @"created_at", @"createdAt",
-        @"text", @"text",
-        @"title", @"title",
-        @"watches_count", @"watchesCount",
-     nil];
-    
-    [statusMapping mapKeyPath:@"attachments" toAttribute:@"attachments"];
-    
-    [statusMapping mapRelationship:@"ad" withMapping:[CUAdvertisement getObjectMapping]];
-    [statusMapping mapRelationship:@"category" withMapping:[CUCategory getObjectMapping]];
-    
-    return statusMapping;*/
-    
     CUJSONMapper *statusMapper = [[[CUJSONMapper alloc] init] autorelease];
     [statusMapper registerClass:[CUStatus class] andMappingDescription:@{
         @"id": @"statusID",
@@ -41,14 +27,30 @@
         @"text" : @"text",
         @"title" : @"title",
         @"watches_count" : @"watchesCount",
+        @"attachments" : @"attachments"
      }];
+    
+    [statusMapper addValueCover:@"createdAt" procblock:^id(id value) {
+        
+        if (s_format == nil) {
+            s_format = [[NSDateFormatter alloc] init];
+            [s_format setDateFormat:@"E MMM d HH:mm:ss Z y"];
+        }
+        
+        return [s_format dateFromString:value];
+    }];
     
     [statusMapper addRelationship:[CUAdvertisement getObjectMapping]
                      withJSONName:@"ad"
                      atPropername:@"ad"];
+    
     [statusMapper addRelationship:[CUCategory getObjectMapping]
                      withJSONName:@"category"
                      atPropername:@"category"];
+    
+    [statusMapper addRelationship:[CUUser getObjectMapping]
+                     withJSONName:@"user"
+                     atPropername:@"user"];
     
     return statusMapper;
 }

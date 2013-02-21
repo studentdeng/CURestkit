@@ -8,31 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-@class AFHTTPClient;
-@class AFJSONRequestOperation;
+@class ASIHTTPRequest;
 @class CUJSONMapper;
 @interface CUObjectManager : NSObject
 
+@property (nonatomic, retain) NSString *baseURLString;
+@property (nonatomic, retain) NSString *HTTPBasicAuthUsername;
+@property (nonatomic, retain) NSString *HTTPBasicAuthPassword;
+
 - (void)getObjectsAtPath:(NSString *)path
               parameters:(NSDictionary *)parameters
-                 success:(void (^)(AFJSONRequestOperation *jsonOperation, NSArray *objects))success
-                   error:(void (^)(AFJSONRequestOperation *jsonOperation, NSString *errorMsg))errorBlock;
+                 success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
+                   error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
 - (void)getLocalObjectsAt:(NSString *)path
                parameters:(NSDictionary *)parameters
-                  success:(void (^)(AFJSONRequestOperation *operation, NSArray *objects))success
-                    error:(void (^)(AFJSONRequestOperation *jsonOperation, NSString *errorMsg))errorBlock;
+                  success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
+                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
 - (void)registerMapper:(CUJSONMapper *)mapper
           atServerPath:(NSString *)serverPath
            andJSONPath:(NSString *)jsonPath;
 
-/*
-                 success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
-                 failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
-*/
-
-@property (nonatomic, retain, readwrite) AFHTTPClient *HTTPClient;
-
+- (void)cancelAllRequest;
+- (void)cancelRequestURLString:(NSString *)urlString;
 
 @end

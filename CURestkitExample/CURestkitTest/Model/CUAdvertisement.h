@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class CUJSONMapper;
 @interface CUAdvertisement : NSObject
 
 + (CUJSONMapper *)getObjectMapping;

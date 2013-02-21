@@ -7,6 +7,7 @@
 //
 
 #import "CUCategory.h"
+#import "CUJSONMapper.h"
 
 @implementation CUCategory
 
