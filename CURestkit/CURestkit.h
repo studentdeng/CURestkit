@@ -10,3 +10,4 @@
 #import "CUJSONMapper.h"
 #import "CUObjectManager.h"
 #import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"

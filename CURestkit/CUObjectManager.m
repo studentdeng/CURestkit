@@ -107,6 +107,63 @@
     [request startAsynchronous];
 }
 
+- (void)post:(NSString *)path
+   userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock
+     success:(void (^)(ASIHTTPRequest *ASIRequest, NSDictionary *object))success
+       error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
+    NSString *urlString = [CUObjectManager serializeBaseURL:self.baseURLString
+                                                       path:path
+                                                     params:nil];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    postBlock(request);
+    
+    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                          andPassword:self.HTTPBasicAuthPassword];
+    
+    __block CUObjectManager *blockSelf = self;
+    
+    [request setCompletionBlock:^{
+        [blockSelf.requestDictionary removeObjectForKey:request.url];
+        
+        if (![blockSelf parseHTTPStatusCode:request]) {
+            errorBlock(request, HTTP_STATUS_CODE_FAILED);
+            
+            return;
+        }
+        
+        id jsonObject = [self JSONFromRequest:request];
+        
+        id object = [CUObjectManager parseObject:blockSelf withJSON:jsonObject at:path];
+        if (object != nil) {
+            success(request, object);
+        }
+        else
+        {
+            errorBlock(request, PARSE_JSON_FAILED);
+        }
+    }];
+    
+    [request setFailedBlock:^{
+        [blockSelf.requestDictionary removeObjectForKey:request.url];
+        
+        errorBlock(request, [[request error] localizedDescription]);
+    }];
+    
+    ASIHTTPRequest *requestInHistory = [blockSelf.requestDictionary objectForKey:request.url];
+    if (requestInHistory != nil) {
+        [requestInHistory clearDelegatesAndCancel];
+        
+        NSLog(@"cancel history request %@", request);
+    }
+    
+    [blockSelf.requestDictionary setObject:request forKey:request.url];
+    
+    [request startAsynchronous];
+}
+
 - (void)cancelAllRequest
 {
     [self.requestDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -203,6 +260,31 @@
     return objects;
 }
 
++ (NSDictionary *)parseObject:(CUObjectManager *)objectManager withJSON:(id)jsonObject at:(NSString *)path
+{
+    NSString *targetJSONPath = [objectManager.jsonPathAtServerPathDictionary objectForKey:path];
+    if ([targetJSONPath length] > 0) {
+        jsonObject = [jsonObject valueForKeyPath:targetJSONPath];
+    }
+    
+    CUJSONMapper *mapper = [objectManager.mapperAtServerPathDictionary objectForKey:path];
+    if (mapper == nil)
+    {
+        return nil;
+    }
+    
+    id objects = nil;
+    if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+        objects = [mapper objectFromJSONDictionary:(NSDictionary *)jsonObject];
+    }
+    else
+    {
+        NSLog(@"");
+    }
+    
+    return objects;
+}
+
 #pragma mark - parse server response
 
 - (BOOL)parseHTTPStatusCode:(ASIHTTPRequest *)request
@@ -238,12 +320,12 @@
     NSMutableArray *pairs = [NSMutableArray array];
 	for (NSString *key in [dict keyEnumerator])
 	{
-		if (!([[dict valueForKey:key] isKindOfClass:[NSString class]]))
-		{
-			continue;
-		}
-		
         NSString *param = [dict objectForKey:key];
+		if (!([param isKindOfClass:[NSString class]]))
+		{
+            param = [NSString stringWithFormat:@"%@", param];
+		}
+
 		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [param URLEncodedString]]];
 	}
 	
