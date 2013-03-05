@@ -36,8 +36,14 @@
      success:(void (^)(ASIHTTPRequest *ASIRequest, NSDictionary *object))success
        error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
+- (void)getResponseAtPath:(NSString *)path
+               parameters:(NSDictionary *)parameters
+                  success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
+
 - (void)cancelAllRequest;
 - (void)cancelRequestURLString:(NSString *)urlString;
+- (void)iteratorRequestUseBlock:(void (^)(ASIHTTPRequest *ASIRequest, BOOL *bCancel))block;
 
 + (NSString *)serializeBaseURL:(NSString *)baseURL path:(NSString *)path params:(NSDictionary *)params;
 

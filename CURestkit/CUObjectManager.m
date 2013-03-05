@@ -107,6 +107,52 @@
     [request startAsynchronous];
 }
 
+- (void)getResponseAtPath:(NSString *)path
+               parameters:(NSDictionary *)parameters
+                  success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
+    NSString *urlString = [CUObjectManager serializeBaseURL:self.baseURLString
+                                                       path:path
+                                                     params:parameters];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                          andPassword:self.HTTPBasicAuthPassword];
+    
+    __block CUObjectManager *blockSelf = self;
+    
+    [request setCompletionBlock:^{
+        [blockSelf.requestDictionary removeObjectForKey:request.url];
+        
+        if (![blockSelf parseHTTPStatusCode:request]) {
+            errorBlock(request, HTTP_STATUS_CODE_FAILED);
+            
+            return;
+        }
+        
+        success(request, [request.responseString JSONValue]);
+    }];
+    
+    [request setFailedBlock:^{
+        [blockSelf.requestDictionary removeObjectForKey:request.url];
+        
+        errorBlock(request, [[request error] localizedDescription]);
+    }];
+    
+    ASIHTTPRequest *requestInHistory = [blockSelf.requestDictionary objectForKey:request.url];
+    if (requestInHistory != nil) {
+        [requestInHistory clearDelegatesAndCancel];
+        
+        NSLog(@"cancel history request %@", request);
+    }
+    
+    [blockSelf.requestDictionary setObject:request forKey:request.url];
+    
+    [request startAsynchronous];
+}
+
 - (void)post:(NSString *)path
    userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock
      success:(void (^)(ASIHTTPRequest *ASIRequest, NSDictionary *object))success
@@ -170,15 +216,35 @@
         ASIHTTPRequest *request = (ASIHTTPRequest *)obj;
         [request clearDelegatesAndCancel];
     }];
+    
+    [self.requestDictionary removeAllObjects];
 }
 
 - (void)cancelRequestURLString:(NSString *)urlString
 {
     ASIHTTPRequest *request = [self.requestDictionary objectForKey:urlString];
     [request clearDelegatesAndCancel];
+    
+    [self.requestDictionary removeObjectForKey:request.url];
 }
 
-#pragma mark - private 
+- (void)iteratorRequestUseBlock:(void (^)(ASIHTTPRequest *ASIRequest, BOOL *bCancel))block;
+{
+    [self.requestDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        ASIHTTPRequest *request = (ASIHTTPRequest *)obj;
+        [request clearDelegatesAndCancel];
+        
+        BOOL bCancel = NO;
+        block(request, &bCancel);
+        
+        if (bCancel) {
+            [request clearDelegatesAndCancel];
+            [self.requestDictionary removeObjectForKey:request.url];
+        }
+    }];
+}
+
+#pragma mark - private
 
 - (ASIHTTPRequest *)requestWithPath:(NSString *)path
                          parameters:(NSDictionary *)parameters
