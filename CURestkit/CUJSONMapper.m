@@ -122,7 +122,7 @@
 - (id)objectfromJSONArray:(NSArray *)jsonArray
 {
     if ([jsonArray count] == 0) {
-        return nil;
+        return [NSMutableArray array];
     }
     
     NSMutableArray *resultArray = [NSMutableArray arrayWithCapacity:[jsonArray count]];

@@ -220,6 +220,17 @@
     [self.requestDictionary removeAllObjects];
 }
 
+- (void)cancelRequestAtPath:(NSString *)path
+{
+    [self iteratorRequestUseBlock:^(ASIHTTPRequest *ASIRequest, BOOL *bCancel) {
+        NSString *url = [[ASIRequest url] absoluteString];
+        
+        if ([url hasPrefix:[NSString stringWithFormat:@"%@%@", self.baseURLString, path]]) {
+            *bCancel = YES;
+        }
+    }];
+}
+
 - (void)cancelRequestURLString:(NSString *)urlString
 {
     ASIHTTPRequest *request = [self.requestDictionary objectForKey:urlString];
@@ -232,8 +243,6 @@
 {
     [self.requestDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         ASIHTTPRequest *request = (ASIHTTPRequest *)obj;
-        [request clearDelegatesAndCancel];
-        
         BOOL bCancel = NO;
         block(request, &bCancel);
         

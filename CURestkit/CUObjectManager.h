@@ -43,6 +43,7 @@
 
 - (void)cancelAllRequest;
 - (void)cancelRequestURLString:(NSString *)urlString;
+- (void)cancelRequestAtPath:(NSString *)path;
 - (void)iteratorRequestUseBlock:(void (^)(ASIHTTPRequest *ASIRequest, BOOL *bCancel))block;
 
 + (NSString *)serializeBaseURL:(NSString *)baseURL path:(NSString *)path params:(NSDictionary *)params;
