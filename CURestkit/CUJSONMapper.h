@@ -10,7 +10,7 @@
 
 @interface CUJSONMapper : NSObject
 
-- (void)registerClass:(Class)class andMappingDescription:(NSDictionary *)dic;
+- (void)registerClass:(Class)id andMappingDescription:(NSDictionary *)dic;
 - (void)addRelationship:(CUJSONMapper *)relationshipMapper
            withJSONName:(NSString *)jsonName
            atPropername:(NSString *)properName;

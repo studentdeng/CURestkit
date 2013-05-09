@@ -86,5 +86,3 @@ I want to make it easy to use. because I don't like coreData and so many class :
     
     
     [self waitForTimeout:10.0f];
-
-## notice not completely finish
