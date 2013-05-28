@@ -10,5 +10,6 @@
 
 @interface ViewController : UIViewController
 - (IBAction)refresh:(id)sender;
+- (IBAction)refreshNoObject:(id)sender;
 
 @end

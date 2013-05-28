@@ -17,15 +17,24 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) ASIHTTPRequest *request;
+
 @end
 
 @implementation ViewController
+
+- (void)dealloc
+{
+    [self.request clearDelegatesAndCancel];
+    
+    [super dealloc];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
+    [self testLocal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,23 +47,60 @@
     [self testRefresh];
 }
 
+- (IBAction)refreshNoObject:(id)sender {
+    [self testNoMappingRefresh];
+}
+
+- (void)testNoMappingRefresh
+{
+    CUObjectManager *manager = [[CUObjectManager alloc] init];
+    manager.baseURLString = MAIN_PATH;
+    
+    CUJSONMapper *mapper = [CUStatus getObjectMapping];
+    
+    self.request =
+    [manager getJSONRequestAtPath:@"statuses/user_timeline"
+                       parameters:@{@"user_id": @"1"}
+                          success:^(ASIHTTPRequest *ASIRequest, id json) {
+                              
+                              NSArray *objects = [mapper objectfromJSONArray:json];
+                              for (CUStatus *item in objects) {
+                                  //NSLog(@"%@", item);
+                              }
+                              
+                              NSDictionary *last = [json lastObject];
+                              
+                              CUStatus *one = [mapper objectFromJSONDictionary:last];
+                              NSLog(@"%@", one);
+                              
+                              
+                          } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
+                              NSLog(@"error = %@, msg = %@", ASIRequest.error, errorMsg);
+                          }];
+    
+    [self.request startSynchronous];
+}
+
 - (void)testRefresh
 {
     CUObjectManager *manager = [[CUObjectManager alloc] init];
     manager.baseURLString = MAIN_PATH;
     
     [manager registerMapper:[CUStatus getObjectMapping]
-               atServerPath:@"statuses/user_timeline4" andJSONPath:@""];
+               atServerPath:@"statuses/user_timeline" andJSONPath:@""];
     
-    [manager getObjectsAtPath:@"statuses/user_timeline"
-                   parameters:@{@"user_id": @"1"}
-                      success:^(ASIHTTPRequest *jsonOperation, NSArray *objects) {
-                          for (CUStatus *item in objects) {
-                              NSLog(@"%@", item);
-                          }
-                      } error:^(ASIHTTPRequest *jsonOperation, NSString *errorMsg) {
-                          NSLog(@"error = %@, msg = %@", jsonOperation.error, errorMsg);
-                      }];
+    self.request = 
+    [manager getObjectsRequestAtPath:@"statuses/user_timeline"
+                          parameters:@{@"user_id": @"1"}
+                             success:^(ASIHTTPRequest *ASIRequest, NSArray *objects) {
+                                 for (CUStatus *item in objects) {
+                                     NSLog(@"%@", item);
+                                 }
+                             } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
+                                 NSLog(@"error = %@, msg = %@", ASIRequest.error, errorMsg);
+                             }];
+    
+    [self.request startAsynchronous];
 }
 
 - (void)testLocal
@@ -65,15 +111,18 @@
     [manager registerMapper:[CUStatus getObjectMapping]
                atServerPath:@"statuses/user_timeline" andJSONPath:@""];
     
-    [manager getLocalObjectsAt:@"statuses/user_timeline"
-                    parameters:@{@"user_id": @"1"}
-                       success:^(ASIHTTPRequest *jsonOperation, NSArray *objects) {
-                           for (CUStatus *item in objects) {
-                               NSLog(@"%@", item);
-                           }
-                       } error:^(ASIHTTPRequest *jsonOperation, NSString *errorMsg) {
-                           NSLog(@"error = %@, msg = %@", jsonOperation.error, errorMsg);
-                       }];
+    self.request =
+    [manager getLocalObjectsRequestAt:@"statuses/user_timeline"
+                           parameters:@{@"user_id": @"1"}
+                              success:^(ASIHTTPRequest *ASIRequest, NSArray *objects) {
+                                  for (CUStatus *item in objects) {
+                                      NSLog(@"%@", item);
+                                  }
+                              } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
+                                  NSLog(@"error = %@, msg = %@", ASIRequest.error, errorMsg);
+                              }];
+    
+    [self.request startSynchronous];
 }
 
 @end
