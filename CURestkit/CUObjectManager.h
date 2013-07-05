@@ -25,8 +25,6 @@
                           path:(NSString *)path
                         params:(NSDictionary *)params;
 
-#pragma mark - Object Request
-
 - (ASIHTTPRequest *)getObjectsRequestAtPath:(NSString *)path
                                  parameters:(NSDictionary *)parameters
                                     success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
@@ -37,23 +35,29 @@
                                      success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
                                        error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
-#pragma mark - get JSON Request
-
 - (ASIHTTPRequest *)getJSONRequestAtPath:(NSString *)path
                               parameters:(NSDictionary *)parameters
                                  success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
                                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
-#pragma mark - post JSON Request
+- (ASIHTTPRequest *)postRequestAtPath:(NSString *)path
+                            userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock
+                              success:(void (^)(ASIHTTPRequest *ASIRequest, id object))success
+                                error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
+
+- (ASIHTTPRequest *)postObjectRequestAtPath:(NSString *)path
+                                 parameters:(NSDictionary *)parameters
+                                    success:(void (^)(ASIHTTPRequest *ASIRequest, id object))success
+                                      error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
 - (ASIHTTPRequest *)postJSONRequestAtPath:(NSString *)path
                                 userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock
                                   success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
                                     error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
-- (ASIHTTPRequest *)postRequestAtPath:(NSString *)path
-                            userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock
-                              success:(void (^)(ASIHTTPRequest *ASIRequest, id object))success
-                                error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
+- (ASIHTTPRequest *)postJSONRequestAtPath:(NSString *)path
+                               parameters:(NSDictionary *)parameters
+                                  success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
 
 @end

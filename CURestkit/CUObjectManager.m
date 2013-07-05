@@ -112,25 +112,12 @@
                                                      params:parameters];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
     [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
                                           andPassword:self.HTTPBasicAuthPassword];
     
-    __block CUObjectManager *blockSelf = self;
-    
-    [request setCompletionBlock:^{
-        if (![blockSelf parseHTTPStatusCode:request]) {
-            errorBlock(request, HTTP_STATUS_CODE_FAILED);
-            
-            return;
-        }
-        
-        success(request, [request.responseString JSONValue]);
-    }];
-    
-    [request setFailedBlock:^{
-        errorBlock(request, [[request error] localizedDescription]);
-    }];
+    [self setJSONResponseWithRequest:request
+                             success:success
+                               error:errorBlock];
     
     return request;
 }
@@ -145,28 +132,36 @@
                                                      params:nil];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
+    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                          andPassword:self.HTTPBasicAuthPassword];
     postBlock(request);
+    [self setJSONResponseWithRequest:request
+                             success:success
+                               error:errorBlock];
     
+    return request;
+}
+
+- (ASIHTTPRequest *)postJSONRequestAtPath:(NSString *)path
+                               parameters:(NSDictionary *)parameters
+                                  success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
+    NSString *urlString = [CUObjectManager serializeBaseURL:self.baseURLString
+                                                       path:path
+                                                     params:nil];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
     [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
                                           andPassword:self.HTTPBasicAuthPassword];
     
-    __block CUObjectManager *blockSelf = self;
+    for (NSString *key in parameters) {
+        [request addPostValue:[parameters objectForKey:key] forKey:key];
+    }
     
-    [request setCompletionBlock:^{
-        if (![blockSelf parseHTTPStatusCode:request]) {
-            errorBlock(request, HTTP_STATUS_CODE_FAILED);
-            
-            return;
-        }
-        
-        id jsonObject = [self JSONFromRequest:request];
-        success(request, jsonObject);
-    }];
-    
-    [request setFailedBlock:^{
-        errorBlock(request, [[request error] localizedDescription]);
-    }];
+    [self setJSONResponseWithRequest:request
+                             success:success
+                               error:errorBlock];
     
     return request;
 }
@@ -181,41 +176,85 @@
                                                      params:nil];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
+    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                          andPassword:self.HTTPBasicAuthPassword];
     postBlock(request);
     
+    __block CUObjectManager *blockSelf = self;
+    [self setJSONResponseWithRequest:request
+                             success:^(ASIHTTPRequest *ASIRequest, id json) {
+                                 id object = [CUObjectManager parseObject:blockSelf withJSON:json at:path];
+                                 if (object != nil) {
+                                     success(request, object);
+                                 }
+                                 else
+                                 {
+                                     errorBlock(request, PARSE_JSON_FAILED);
+                                 }
+                             } error:errorBlock];
+    
+    return request;
+}
+
+- (ASIHTTPRequest *)postObjectRequestAtPath:(NSString *)path
+                                 parameters:(NSDictionary *)parameters
+                                    success:(void (^)(ASIHTTPRequest *ASIRequest, id object))success
+                                      error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
+    NSString *urlString = [CUObjectManager serializeBaseURL:self.baseURLString
+                                                       path:path
+                                                     params:nil];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
     [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
                                           andPassword:self.HTTPBasicAuthPassword];
     
+    for (NSString *key in parameters) {
+        [request addPostValue:[parameters objectForKey:key] forKey:key];
+    }
+    
+    
+    __block CUObjectManager *blockSelf = self;
+    
+    [self setJSONResponseWithRequest:request
+                             success:^(ASIHTTPRequest *ASIRequest, id json) {
+                                 id objects = [CUObjectManager parseObject:blockSelf withJSON:json at:path];
+                                 if (objects != nil) {
+                                     success(request, objects);
+                                 }
+                                 else
+                                 {
+                                     errorBlock(request, PARSE_JSON_FAILED);
+                                 }
+                             } error:errorBlock];
+    
+    return request;
+}
+
+#pragma mark - private
+
+- (void)setJSONResponseWithRequest:(ASIHTTPRequest *)request
+                           success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                             error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
     __block CUObjectManager *blockSelf = self;
     
     [request setCompletionBlock:^{
         if (![blockSelf parseHTTPStatusCode:request]) {
+            NSLog(@"%@ %@", HTTP_STATUS_CODE_FAILED, [request responseString]);
             errorBlock(request, HTTP_STATUS_CODE_FAILED);
             
             return;
         }
         
-        id jsonObject = [self JSONFromRequest:request];
-        
-        id object = [CUObjectManager parseObject:blockSelf withJSON:jsonObject at:path];
-        if (object != nil) {
-            success(request, object);
-        }
-        else
-        {
-            errorBlock(request, PARSE_JSON_FAILED);
-        }
+        success(request, [request.responseString JSONValue]);
     }];
     
     [request setFailedBlock:^{
+        NSLog(@"%@", [[request error] localizedDescription]);
         errorBlock(request, [[request error] localizedDescription]);
     }];
-
-    return request;
 }
-
-#pragma mark - private
 
 - (ASIHTTPRequest *)requestWithPath:(NSString *)path
                          parameters:(NSDictionary *)parameters
@@ -233,28 +272,17 @@
     
     __block CUObjectManager *blockSelf = self;
     
-    [request setCompletionBlock:^{
-        if (![blockSelf parseHTTPStatusCode:request]) {
-            errorBlock(request, HTTP_STATUS_CODE_FAILED);
-            
-            return;
-        }
-        
-        id jsonObject = [self JSONFromRequest:request];
-        
-        id objects = [CUObjectManager parseObjects:blockSelf withJSON:jsonObject at:path];
-        if (objects != nil) {
-            success(request, objects);
-        }
-        else
-        {
-            errorBlock(request, PARSE_JSON_FAILED);
-        }
-    }];
-    
-    [request setFailedBlock:^{
-        errorBlock(request, [[request error] localizedDescription]);
-    }];
+    [self setJSONResponseWithRequest:request
+                             success:^(ASIHTTPRequest *ASIRequest, id json) {
+                                 id objects = [CUObjectManager parseObjects:blockSelf withJSON:json at:path];
+                                 if (objects != nil) {
+                                     success(request, objects);
+                                 }
+                                 else
+                                 {
+                                     errorBlock(request, PARSE_JSON_FAILED);
+                                 }
+                             } error:errorBlock];
     
     return request;
 }
