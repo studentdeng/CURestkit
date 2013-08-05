@@ -1,6 +1,14 @@
 CURestkit
 =========
 
+#install
+
+import:
+libxml, CFNetwork, libz, CoreGraphics, MobileCoreServices, SystemConfiguration
+AudioToolbox, QuartzCore, Security
+
+header search path add ${SDK_DIR}/usr/include/libxml2
+
 #description
 
 Inspired By Restkit.
