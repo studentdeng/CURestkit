@@ -45,7 +45,9 @@
                                               encoding:NSUTF8StringEncoding
                                                  error:nil];
     
-    self.jsonArray = [json JSONValue];
+    self.jsonArray = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
+                                                                     options:kNilOptions
+                                                                       error:nil];
 }
 
 - (void)tearDown

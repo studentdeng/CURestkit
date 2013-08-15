@@ -10,7 +10,6 @@
 #import "CUJSONMapper.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-#import "JSON.h"
 #import "ASIDownloadCache.h"
 
 #define HTTP_STATUS_CODE_FAILED     @"httpcodefailed"
@@ -247,7 +246,17 @@
             return;
         }
         
-        success(request, [request.responseString JSONValue]);
+        NSError *error = nil;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:request.responseData
+                                                        options:kNilOptions
+                                                          error:&error];
+        if (error == nil) {
+            success(request, jsonObject);
+        }
+        else
+        {
+            errorBlock(request, PARSE_JSON_FAILED);
+        }
     }];
     
     [request setFailedBlock:^{
@@ -347,14 +356,6 @@
     }
     
     return NO;
-}
-
-- (id)JSONFromRequest:(ASIHTTPRequest *)request
-{
-    NSString *response = [request responseString];
-    id jsonObject = [response JSONValue];
-    
-    return jsonObject;
 }
 
 #pragma mark - URL schema
