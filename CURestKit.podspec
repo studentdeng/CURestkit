@@ -28,8 +28,7 @@ Pod::Spec.new do |s|
                    * Finally, don't worry about the indent, CocoaPods strips it!
                    DESC
 
-  s.homepage     = "http://EXAMPLE/CURestKit"
-  # s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage     = "https://github.com/studentdeng/CURestkit"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -115,7 +114,6 @@ Pod::Spec.new do |s|
   # s.framework  = 'SomeFramework'
    s.frameworks = 'CFNetwork', 'CoreGraphics', 'MobileCoreServices', 'SystemConfiguration', 'AudioToolbox', 'QuartzCore', 'Security'
 
-  # s.library   = 'iconv'
    s.libraries = 'z', 'xml2'
 
 
