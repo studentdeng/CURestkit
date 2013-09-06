@@ -25,6 +25,15 @@
                           path:(NSString *)path
                         params:(NSDictionary *)params;
 
+#pragma mark - common GET
+
+- (ASIHTTPRequest *)requestWithURL:(NSURL *)url
+                        parameters:(NSDictionary *)parameters
+                           success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                             error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
+
+#pragma mark - GET
+
 - (ASIHTTPRequest *)getObjectsRequestAtPath:(NSString *)path
                                  parameters:(NSDictionary *)parameters
                                     success:(void (^)(ASIHTTPRequest *ASIRequest, NSArray *objects))success
@@ -39,6 +48,8 @@
                               parameters:(NSDictionary *)parameters
                                  success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
                                    error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock;
+
+#pragma mark - POST
 
 - (ASIHTTPRequest *)postRequestAtPath:(NSString *)path
                             userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock

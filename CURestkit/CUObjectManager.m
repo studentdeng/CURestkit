@@ -121,6 +121,30 @@
     return request;
 }
 
+- (ASIHTTPRequest *)requestWithURL:(NSURL *)url
+                        parameters:(NSDictionary *)parameters
+                           success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
+                             error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
+{
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
+    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                          andPassword:self.HTTPBasicAuthPassword];
+    
+    [self setJSONResponseWithRequest:request
+                             success:^(ASIHTTPRequest *ASIRequest, id json) {
+                                 if (json != nil) {
+                                     success(request, json);
+                                 }
+                                 else
+                                 {
+                                     errorBlock(request, PARSE_JSON_FAILED);
+                                 }
+                             } error:errorBlock];
+    
+    return request;
+}
+
 - (ASIHTTPRequest *)postJSONRequestAtPath:(NSString *)path
                                 userBlock:(void (^)(ASIFormDataRequest *ASIRequest))postBlock
                                   success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
