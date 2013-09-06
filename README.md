@@ -1,6 +1,8 @@
 CURestkit
 =========
 
+None-ARC support
+
 #install
 
 import:
