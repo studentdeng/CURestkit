@@ -24,7 +24,7 @@
 
 - (NSString *)URLEncodedStringWithCFStringEncoding:(CFStringEncoding)encoding
 {
-	return [(NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[self mutableCopy] autorelease], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"), encoding) autorelease];
+	return (__bridge_transfer NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[self mutableCopy], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"), encoding);
 }
 
 @end
@@ -43,8 +43,6 @@
     self.mapperAtServerPathDictionary = nil;
     self.jsonPathAtServerPathDictionary = nil;
     self.baseURLString = nil;
-    
-    [super dealloc];
 }
 
 - (id)init
@@ -260,32 +258,33 @@
                            success:(void (^)(ASIHTTPRequest *ASIRequest, id json))success
                              error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
 {
-    __block CUObjectManager *blockSelf = self;
-    
+    __weak CUObjectManager *blockSelf = self;
+    __weak ASIHTTPRequest *blockRequest = request;
+
     [request setCompletionBlock:^{
-        if (![blockSelf parseHTTPStatusCode:request]) {
-            NSLog(@"%@ %@", HTTP_STATUS_CODE_FAILED, [request responseString]);
-            errorBlock(request, HTTP_STATUS_CODE_FAILED);
+        if (![blockSelf parseHTTPStatusCode:blockRequest]) {
+            NSLog(@"%@ %@", HTTP_STATUS_CODE_FAILED, [blockRequest responseString]);
+            errorBlock(blockRequest, HTTP_STATUS_CODE_FAILED);
             
             return;
         }
         
         NSError *error = nil;
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:request.responseData
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:blockRequest.responseData
                                                         options:kNilOptions
                                                           error:&error];
         if (error == nil) {
-            success(request, jsonObject);
+            success(blockRequest, jsonObject);
         }
         else
         {
-            errorBlock(request, PARSE_JSON_FAILED);
+            errorBlock(blockRequest, PARSE_JSON_FAILED);
         }
     }];
     
     [request setFailedBlock:^{
-        NSLog(@"%@", [[request error] localizedDescription]);
-        errorBlock(request, [[request error] localizedDescription]);
+        NSLog(@"%@", [[blockRequest error] localizedDescription]);
+        errorBlock(blockRequest, [[blockRequest error] localizedDescription]);
     }];
 }
 

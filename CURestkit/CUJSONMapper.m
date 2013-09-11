@@ -24,8 +24,6 @@
     self.mappingDictionary = nil;
     self.valueCoverblockDictionary = nil;
     self.classType = nil;
-    
-    [super dealloc];
 }
 
 - (id)init
@@ -63,7 +61,7 @@
 {
     Class classType = self.classType;
     
-    id instance = [[[classType alloc] init] autorelease];
+    id instance = [[classType alloc] init];
     
     [self handlePropertyList:jsonDic atInstance:instance];
     
