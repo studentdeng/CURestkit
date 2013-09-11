@@ -1,15 +1,12 @@
 CURestkit
 =========
 
-None-ARC support
+ARC support
 
 #install
 
-import:
-libxml, CFNetwork, libz, CoreGraphics, MobileCoreServices, SystemConfiguration
-AudioToolbox, QuartzCore, Security
-
-header search path add ${SDK_DIR}/usr/include/libxml2
+  platform :ios, '5.0'
+  pod 'CURestKit', '~>1.0.2' 
 
 #description
 
