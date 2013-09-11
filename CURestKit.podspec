@@ -1,7 +1,3 @@
-def import_pods
-  pod 'ASIHTTPRequest', '~> 1.8.1'
-end
-
 Pod::Spec.new do |s|
   s.name         = "CURestKit"
   s.version      = "1.0.2"
@@ -16,7 +12,10 @@ Pod::Spec.new do |s|
   s.author       = { "curer" => "studentdeng@hotmail.com" }
   s.platform     = :ios, '5.0'
 
-  s.source       = { :git => "https://github.com/studentdeng/CURestkit.git", :tag => s.version.to_s }
+  #s.source       = { :git => "https://github.com/studentdeng/CURestkit.git", :tag => s.version.to_s }
+  s.source       = { :git => "/Users/curer/myGitHub/CURestKit"}
   s.source_files  = 'CURestkit', 'CURestkit/**/*.{h,m}'
   s.requires_arc = true
+
+  s.dependency 'ASIHTTPRequest'
 end
