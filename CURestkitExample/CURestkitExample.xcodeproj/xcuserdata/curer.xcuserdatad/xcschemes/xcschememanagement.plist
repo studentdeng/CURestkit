@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CURestkitExample.xcscheme</key>
+		<key>CURestKitExample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>87C5AAF616CA3286001CACA4</key>
+		<key>D7FD15D017E0641C00A33479</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>87C5ABBD16CA784A001CACA4</key>
+		<key>D7FD15F117E0641C00A33479</key>
 		<dict>
 			<key>primary</key>
 			<true/>

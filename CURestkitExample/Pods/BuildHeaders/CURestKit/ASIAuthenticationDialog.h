@@ -1,0 +1,1 @@
+../../CURestKit/CURestkit/Vendor/ASIHTTPRequest/ASIAuthenticationDialog.h

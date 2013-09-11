@@ -1,0 +1,10 @@
+PODS:
+  - CURestKit (1.0.2)
+
+DEPENDENCIES:
+  - CURestKit (~> 1.0.2)
+
+SPEC CHECKSUMS:
+  CURestKit: ce84fa8146989c274ad16d6d2a661679b5ad91c9
+
+COCOAPODS: 0.24.0

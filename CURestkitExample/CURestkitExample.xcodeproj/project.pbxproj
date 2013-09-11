@@ -1,823 +1,1086 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		870ECD7316D5C10E004E21A1 /* CUUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 870ECD7116D5C10E004E21A1 /* CUUser.m */; };
-		870ECD7416D5C12A004E21A1 /* CUUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 870ECD7116D5C10E004E21A1 /* CUUser.m */; };
-		870ECD7516D5C12A004E21A1 /* CUUser.h in Sources */ = {isa = PBXBuildFile; fileRef = 870ECD7216D5C10E004E21A1 /* CUUser.h */; };
-		873BC61A16D46A4700B09DEF /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5E516D46A4700B09DEF /* ASIDataCompressor.m */; };
-		873BC61B16D46A4700B09DEF /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5E716D46A4700B09DEF /* ASIDataDecompressor.m */; };
-		873BC61C16D46A4700B09DEF /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5E916D46A4700B09DEF /* ASIDownloadCache.m */; };
-		873BC61D16D46A4700B09DEF /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5EB16D46A4700B09DEF /* ASIFormDataRequest.m */; };
-		873BC61E16D46A4700B09DEF /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5ED16D46A4700B09DEF /* ASIHTTPRequest.m */; };
-		873BC61F16D46A4700B09DEF /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5F116D46A4700B09DEF /* ASIInputStream.m */; };
-		873BC62016D46A4700B09DEF /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5F316D46A4700B09DEF /* ASINetworkQueue.m */; };
-		873BC62116D46A4700B09DEF /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5F716D46A4700B09DEF /* ASIWebPageRequest.m */; };
-		873BC62216D46A4700B09DEF /* ASICloudFilesCDNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5FA16D46A4700B09DEF /* ASICloudFilesCDNRequest.m */; };
-		873BC62316D46A4700B09DEF /* ASICloudFilesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5FC16D46A4700B09DEF /* ASICloudFilesContainer.m */; };
-		873BC62416D46A4700B09DEF /* ASICloudFilesContainerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC5FE16D46A4700B09DEF /* ASICloudFilesContainerRequest.m */; };
-		873BC62516D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC60016D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.m */; };
-		873BC62616D46A4700B09DEF /* ASICloudFilesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC60216D46A4700B09DEF /* ASICloudFilesObject.m */; };
-		873BC62716D46A4700B09DEF /* ASICloudFilesObjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC60416D46A4700B09DEF /* ASICloudFilesObjectRequest.m */; };
-		873BC62816D46A4700B09DEF /* ASICloudFilesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC60616D46A4700B09DEF /* ASICloudFilesRequest.m */; };
-		873BC62916D46A4700B09DEF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC60A16D46A4700B09DEF /* Reachability.m */; };
-		873BC62A16D46A4700B09DEF /* ASIS3Bucket.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC60E16D46A4700B09DEF /* ASIS3Bucket.m */; };
-		873BC62B16D46A4700B09DEF /* ASIS3BucketObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC61016D46A4700B09DEF /* ASIS3BucketObject.m */; };
-		873BC62C16D46A4700B09DEF /* ASIS3BucketRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC61216D46A4700B09DEF /* ASIS3BucketRequest.m */; };
-		873BC62D16D46A4700B09DEF /* ASIS3ObjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC61416D46A4700B09DEF /* ASIS3ObjectRequest.m */; };
-		873BC62E16D46A4700B09DEF /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC61616D46A4700B09DEF /* ASIS3Request.m */; };
-		873BC62F16D46A4700B09DEF /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC61816D46A4700B09DEF /* ASIS3ServiceRequest.m */; };
-		873BC63116D46AB400B09DEF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 873BC63016D46AB400B09DEF /* libxml2.dylib */; };
-		873BC63316D46ACA00B09DEF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873BC63216D46ACA00B09DEF /* QuartzCore.framework */; };
-		873BC63516D46ACF00B09DEF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873BC63416D46ACF00B09DEF /* Security.framework */; };
-		873BC63716D46B0E00B09DEF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 873BC63616D46B0E00B09DEF /* libz.dylib */; };
-		873BC63A16D46B7700B09DEF /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63916D46B7600B09DEF /* ASIAuthenticationDialog.m */; };
-		873BC64616D48E7000B09DEF /* CUAdvertisement.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63D16D48E7000B09DEF /* CUAdvertisement.m */; };
-		873BC64716D48E7000B09DEF /* CUCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63F16D48E7000B09DEF /* CUCategory.m */; };
-		873BC64816D48E7000B09DEF /* CUStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC64116D48E7000B09DEF /* CUStatus.m */; };
-		873BC64B16D48EAE00B09DEF /* CUAdvertisement.h in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63C16D48E7000B09DEF /* CUAdvertisement.h */; };
-		873BC64C16D48EAE00B09DEF /* CUAdvertisement.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63D16D48E7000B09DEF /* CUAdvertisement.m */; };
-		873BC64D16D48EAE00B09DEF /* CUCategory.h in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63E16D48E7000B09DEF /* CUCategory.h */; };
-		873BC64E16D48EAE00B09DEF /* CUCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC63F16D48E7000B09DEF /* CUCategory.m */; };
-		873BC64F16D48EAE00B09DEF /* CUStatus.h in Sources */ = {isa = PBXBuildFile; fileRef = 873BC64016D48E7000B09DEF /* CUStatus.h */; };
-		873BC65016D48EAE00B09DEF /* CUStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 873BC64116D48E7000B09DEF /* CUStatus.m */; };
-		873BC6A416D492AD00B09DEF /* CURestkit.h in Sources */ = {isa = PBXBuildFile; fileRef = 873BC6A316D4926400B09DEF /* CURestkit.h */; };
-		875B147116CB9B44005C10AE /* CUObjectManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B147016CB9B44005C10AE /* CUObjectManagerTest.m */; };
-		875B147716CB9E26005C10AE /* SenAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B147516CB9E26005C10AE /* SenAsyncTestCase.m */; };
-		87C5AAFB16CA3286001CACA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AAFA16CA3286001CACA4 /* UIKit.framework */; };
-		87C5AAFD16CA3286001CACA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AAFC16CA3286001CACA4 /* Foundation.framework */; };
-		87C5AAFF16CA3286001CACA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AAFE16CA3286001CACA4 /* CoreGraphics.framework */; };
-		87C5AB0516CA3286001CACA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AB0316CA3286001CACA4 /* InfoPlist.strings */; };
-		87C5AB0716CA3286001CACA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5AB0616CA3286001CACA4 /* main.m */; };
-		87C5AB0B16CA3286001CACA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5AB0A16CA3286001CACA4 /* AppDelegate.m */; };
-		87C5AB0D16CA3286001CACA4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AB0C16CA3286001CACA4 /* Default.png */; };
-		87C5AB0F16CA3286001CACA4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AB0E16CA3286001CACA4 /* Default@2x.png */; };
-		87C5AB1116CA3286001CACA4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AB1016CA3286001CACA4 /* Default-568h@2x.png */; };
-		87C5AB1416CA3286001CACA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5AB1316CA3286001CACA4 /* ViewController.m */; };
-		87C5AB1716CA3286001CACA4 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AB1516CA3286001CACA4 /* ViewController.xib */; };
-		87C5AB3D16CA33AD001CACA4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AB3C16CA33AD001CACA4 /* SystemConfiguration.framework */; };
-		87C5AB3F16CA33B2001CACA4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AB3E16CA33B2001CACA4 /* MobileCoreServices.framework */; };
-		87C5AB4116CA33B6001CACA4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AB4016CA33B6001CACA4 /* CFNetwork.framework */; };
-		87C5AB4416CA3414001CACA4 /* CUJSONMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5AB4316CA3414001CACA4 /* CUJSONMapper.m */; };
-		87C5AB4816CA344B001CACA4 /* CUObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5AB4716CA344B001CACA4 /* CUObjectManager.m */; };
-		87C5ABBF16CA784A001CACA4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AB6A16CA6ACE001CACA4 /* SenTestingKit.framework */; };
-		87C5ABC016CA784A001CACA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AAFA16CA3286001CACA4 /* UIKit.framework */; };
-		87C5ABC116CA784A001CACA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C5AAFC16CA3286001CACA4 /* Foundation.framework */; };
-		87C5ABC716CA784A001CACA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87C5ABC516CA784A001CACA4 /* InfoPlist.strings */; };
-		87C5ABD816CA7A4E001CACA4 /* CUJSONMapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5ABD716CA7A4E001CACA4 /* CUJSONMapperTest.m */; };
-		87C5AC1916CA8646001CACA4 /* json.json in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AC1816CA8646001CACA4 /* json.json */; };
-		87C5AC4916CA8C4A001CACA4 /* json.json in Resources */ = {isa = PBXBuildFile; fileRef = 87C5AC1816CA8646001CACA4 /* json.json */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		87C5ABCF16CA7900001CACA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87C5AAEF16CA3286001CACA4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 87C5AAF616CA3286001CACA4;
-			remoteInfo = CURestkitExample;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		870ECD7116D5C10E004E21A1 /* CUUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUUser.m; sourceTree = "<group>"; };
-		870ECD7216D5C10E004E21A1 /* CUUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUUser.h; sourceTree = "<group>"; };
-		873BC5E316D46A4700B09DEF /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
-		873BC5E416D46A4700B09DEF /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
-		873BC5E516D46A4700B09DEF /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
-		873BC5E616D46A4700B09DEF /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
-		873BC5E716D46A4700B09DEF /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
-		873BC5E816D46A4700B09DEF /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
-		873BC5E916D46A4700B09DEF /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
-		873BC5EA16D46A4700B09DEF /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
-		873BC5EB16D46A4700B09DEF /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
-		873BC5EC16D46A4700B09DEF /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
-		873BC5ED16D46A4700B09DEF /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
-		873BC5EE16D46A4700B09DEF /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
-		873BC5EF16D46A4700B09DEF /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
-		873BC5F016D46A4700B09DEF /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
-		873BC5F116D46A4700B09DEF /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
-		873BC5F216D46A4700B09DEF /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
-		873BC5F316D46A4700B09DEF /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
-		873BC5F416D46A4700B09DEF /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
-		873BC5F616D46A4700B09DEF /* ASIWebPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIWebPageRequest.h; sourceTree = "<group>"; };
-		873BC5F716D46A4700B09DEF /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIWebPageRequest.m; sourceTree = "<group>"; };
-		873BC5F916D46A4700B09DEF /* ASICloudFilesCDNRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesCDNRequest.h; sourceTree = "<group>"; };
-		873BC5FA16D46A4700B09DEF /* ASICloudFilesCDNRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesCDNRequest.m; sourceTree = "<group>"; };
-		873BC5FB16D46A4700B09DEF /* ASICloudFilesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesContainer.h; sourceTree = "<group>"; };
-		873BC5FC16D46A4700B09DEF /* ASICloudFilesContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesContainer.m; sourceTree = "<group>"; };
-		873BC5FD16D46A4700B09DEF /* ASICloudFilesContainerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesContainerRequest.h; sourceTree = "<group>"; };
-		873BC5FE16D46A4700B09DEF /* ASICloudFilesContainerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesContainerRequest.m; sourceTree = "<group>"; };
-		873BC5FF16D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesContainerXMLParserDelegate.h; sourceTree = "<group>"; };
-		873BC60016D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesContainerXMLParserDelegate.m; sourceTree = "<group>"; };
-		873BC60116D46A4700B09DEF /* ASICloudFilesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesObject.h; sourceTree = "<group>"; };
-		873BC60216D46A4700B09DEF /* ASICloudFilesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesObject.m; sourceTree = "<group>"; };
-		873BC60316D46A4700B09DEF /* ASICloudFilesObjectRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesObjectRequest.h; sourceTree = "<group>"; };
-		873BC60416D46A4700B09DEF /* ASICloudFilesObjectRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesObjectRequest.m; sourceTree = "<group>"; };
-		873BC60516D46A4700B09DEF /* ASICloudFilesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesRequest.h; sourceTree = "<group>"; };
-		873BC60616D46A4700B09DEF /* ASICloudFilesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesRequest.m; sourceTree = "<group>"; };
-		873BC60916D46A4700B09DEF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		873BC60A16D46A4700B09DEF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		873BC60C16D46A4700B09DEF /* ASINSXMLParserCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSXMLParserCompat.h; sourceTree = "<group>"; };
-		873BC60D16D46A4700B09DEF /* ASIS3Bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3Bucket.h; sourceTree = "<group>"; };
-		873BC60E16D46A4700B09DEF /* ASIS3Bucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3Bucket.m; sourceTree = "<group>"; };
-		873BC60F16D46A4700B09DEF /* ASIS3BucketObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3BucketObject.h; sourceTree = "<group>"; };
-		873BC61016D46A4700B09DEF /* ASIS3BucketObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3BucketObject.m; sourceTree = "<group>"; };
-		873BC61116D46A4700B09DEF /* ASIS3BucketRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3BucketRequest.h; sourceTree = "<group>"; };
-		873BC61216D46A4700B09DEF /* ASIS3BucketRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3BucketRequest.m; sourceTree = "<group>"; };
-		873BC61316D46A4700B09DEF /* ASIS3ObjectRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ObjectRequest.h; sourceTree = "<group>"; };
-		873BC61416D46A4700B09DEF /* ASIS3ObjectRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ObjectRequest.m; sourceTree = "<group>"; };
-		873BC61516D46A4700B09DEF /* ASIS3Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3Request.h; sourceTree = "<group>"; };
-		873BC61616D46A4700B09DEF /* ASIS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3Request.m; sourceTree = "<group>"; };
-		873BC61716D46A4700B09DEF /* ASIS3ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ServiceRequest.h; sourceTree = "<group>"; };
-		873BC61816D46A4700B09DEF /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
-		873BC63016D46AB400B09DEF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		873BC63216D46ACA00B09DEF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		873BC63416D46ACF00B09DEF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		873BC63616D46B0E00B09DEF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		873BC63816D46B7600B09DEF /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
-		873BC63916D46B7600B09DEF /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
-		873BC63C16D48E7000B09DEF /* CUAdvertisement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUAdvertisement.h; sourceTree = "<group>"; };
-		873BC63D16D48E7000B09DEF /* CUAdvertisement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUAdvertisement.m; sourceTree = "<group>"; };
-		873BC63E16D48E7000B09DEF /* CUCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCategory.h; sourceTree = "<group>"; };
-		873BC63F16D48E7000B09DEF /* CUCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCategory.m; sourceTree = "<group>"; };
-		873BC64016D48E7000B09DEF /* CUStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUStatus.h; sourceTree = "<group>"; };
-		873BC64116D48E7000B09DEF /* CUStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUStatus.m; sourceTree = "<group>"; };
-		873BC6A316D4926400B09DEF /* CURestkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CURestkit.h; sourceTree = "<group>"; };
-		875B146F16CB9B44005C10AE /* CUObjectManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUObjectManagerTest.h; sourceTree = "<group>"; };
-		875B147016CB9B44005C10AE /* CUObjectManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUObjectManagerTest.m; sourceTree = "<group>"; };
-		875B147416CB9E25005C10AE /* SenAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenAsyncTestCase.h; sourceTree = "<group>"; };
-		875B147516CB9E26005C10AE /* SenAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenAsyncTestCase.m; sourceTree = "<group>"; };
-		87C5AAF716CA3286001CACA4 /* CURestkitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CURestkitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		87C5AAFA16CA3286001CACA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		87C5AAFC16CA3286001CACA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		87C5AAFE16CA3286001CACA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		87C5AB0216CA3286001CACA4 /* CURestkitExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CURestkitExample-Info.plist"; sourceTree = "<group>"; };
-		87C5AB0416CA3286001CACA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		87C5AB0616CA3286001CACA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		87C5AB0816CA3286001CACA4 /* CURestkitExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CURestkitExample-Prefix.pch"; sourceTree = "<group>"; };
-		87C5AB0916CA3286001CACA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		87C5AB0A16CA3286001CACA4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		87C5AB0C16CA3286001CACA4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		87C5AB0E16CA3286001CACA4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		87C5AB1016CA3286001CACA4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		87C5AB1216CA3286001CACA4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		87C5AB1316CA3286001CACA4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		87C5AB1616CA3286001CACA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		87C5AB3C16CA33AD001CACA4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		87C5AB3E16CA33B2001CACA4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		87C5AB4016CA33B6001CACA4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		87C5AB4216CA3414001CACA4 /* CUJSONMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUJSONMapper.h; sourceTree = "<group>"; };
-		87C5AB4316CA3414001CACA4 /* CUJSONMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUJSONMapper.m; sourceTree = "<group>"; };
-		87C5AB4616CA344B001CACA4 /* CUObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUObjectManager.h; sourceTree = "<group>"; };
-		87C5AB4716CA344B001CACA4 /* CUObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUObjectManager.m; sourceTree = "<group>"; };
-		87C5AB4F16CA66E5001CACA4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		87C5AB6A16CA6ACE001CACA4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		87C5ABBE16CA784A001CACA4 /* CURestkitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CURestkitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		87C5ABC416CA784A001CACA4 /* CURestkitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CURestkitTest-Info.plist"; sourceTree = "<group>"; };
-		87C5ABC616CA784A001CACA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		87C5ABCB16CA784A001CACA4 /* CURestkitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CURestkitTest-Prefix.pch"; sourceTree = "<group>"; };
-		87C5ABD616CA7A4E001CACA4 /* CUJSONMapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUJSONMapperTest.h; sourceTree = "<group>"; };
-		87C5ABD716CA7A4E001CACA4 /* CUJSONMapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUJSONMapperTest.m; sourceTree = "<group>"; };
-		87C5AC1816CA8646001CACA4 /* json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = json.json; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		87C5AAF416CA3286001CACA4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				873BC63716D46B0E00B09DEF /* libz.dylib in Frameworks */,
-				873BC63516D46ACF00B09DEF /* Security.framework in Frameworks */,
-				873BC63316D46ACA00B09DEF /* QuartzCore.framework in Frameworks */,
-				87C5AB4116CA33B6001CACA4 /* CFNetwork.framework in Frameworks */,
-				873BC63116D46AB400B09DEF /* libxml2.dylib in Frameworks */,
-				87C5AB3F16CA33B2001CACA4 /* MobileCoreServices.framework in Frameworks */,
-				87C5AB3D16CA33AD001CACA4 /* SystemConfiguration.framework in Frameworks */,
-				87C5AAFB16CA3286001CACA4 /* UIKit.framework in Frameworks */,
-				87C5AAFD16CA3286001CACA4 /* Foundation.framework in Frameworks */,
-				87C5AAFF16CA3286001CACA4 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87C5ABBA16CA784A001CACA4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				87C5ABBF16CA784A001CACA4 /* SenTestingKit.framework in Frameworks */,
-				87C5ABC016CA784A001CACA4 /* UIKit.framework in Frameworks */,
-				87C5ABC116CA784A001CACA4 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		873BC5E016D46A4700B09DEF /* ASIHTTPRequest */ = {
-			isa = PBXGroup;
-			children = (
-				873BC63816D46B7600B09DEF /* ASIAuthenticationDialog.h */,
-				873BC63916D46B7600B09DEF /* ASIAuthenticationDialog.m */,
-				873BC5E316D46A4700B09DEF /* ASICacheDelegate.h */,
-				873BC5E416D46A4700B09DEF /* ASIDataCompressor.h */,
-				873BC5E516D46A4700B09DEF /* ASIDataCompressor.m */,
-				873BC5E616D46A4700B09DEF /* ASIDataDecompressor.h */,
-				873BC5E716D46A4700B09DEF /* ASIDataDecompressor.m */,
-				873BC5E816D46A4700B09DEF /* ASIDownloadCache.h */,
-				873BC5E916D46A4700B09DEF /* ASIDownloadCache.m */,
-				873BC5EA16D46A4700B09DEF /* ASIFormDataRequest.h */,
-				873BC5EB16D46A4700B09DEF /* ASIFormDataRequest.m */,
-				873BC5EC16D46A4700B09DEF /* ASIHTTPRequest.h */,
-				873BC5ED16D46A4700B09DEF /* ASIHTTPRequest.m */,
-				873BC5EE16D46A4700B09DEF /* ASIHTTPRequestConfig.h */,
-				873BC5EF16D46A4700B09DEF /* ASIHTTPRequestDelegate.h */,
-				873BC5F016D46A4700B09DEF /* ASIInputStream.h */,
-				873BC5F116D46A4700B09DEF /* ASIInputStream.m */,
-				873BC5F216D46A4700B09DEF /* ASINetworkQueue.h */,
-				873BC5F316D46A4700B09DEF /* ASINetworkQueue.m */,
-				873BC5F416D46A4700B09DEF /* ASIProgressDelegate.h */,
-				873BC5F516D46A4700B09DEF /* ASIWebPageRequest */,
-				873BC5F816D46A4700B09DEF /* CloudFiles */,
-				873BC60716D46A4700B09DEF /* External */,
-				873BC60B16D46A4700B09DEF /* S3 */,
-			);
-			path = ASIHTTPRequest;
-			sourceTree = "<group>";
-		};
-		873BC5F516D46A4700B09DEF /* ASIWebPageRequest */ = {
-			isa = PBXGroup;
-			children = (
-				873BC5F616D46A4700B09DEF /* ASIWebPageRequest.h */,
-				873BC5F716D46A4700B09DEF /* ASIWebPageRequest.m */,
-			);
-			path = ASIWebPageRequest;
-			sourceTree = "<group>";
-		};
-		873BC5F816D46A4700B09DEF /* CloudFiles */ = {
-			isa = PBXGroup;
-			children = (
-				873BC5F916D46A4700B09DEF /* ASICloudFilesCDNRequest.h */,
-				873BC5FA16D46A4700B09DEF /* ASICloudFilesCDNRequest.m */,
-				873BC5FB16D46A4700B09DEF /* ASICloudFilesContainer.h */,
-				873BC5FC16D46A4700B09DEF /* ASICloudFilesContainer.m */,
-				873BC5FD16D46A4700B09DEF /* ASICloudFilesContainerRequest.h */,
-				873BC5FE16D46A4700B09DEF /* ASICloudFilesContainerRequest.m */,
-				873BC5FF16D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.h */,
-				873BC60016D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.m */,
-				873BC60116D46A4700B09DEF /* ASICloudFilesObject.h */,
-				873BC60216D46A4700B09DEF /* ASICloudFilesObject.m */,
-				873BC60316D46A4700B09DEF /* ASICloudFilesObjectRequest.h */,
-				873BC60416D46A4700B09DEF /* ASICloudFilesObjectRequest.m */,
-				873BC60516D46A4700B09DEF /* ASICloudFilesRequest.h */,
-				873BC60616D46A4700B09DEF /* ASICloudFilesRequest.m */,
-			);
-			path = CloudFiles;
-			sourceTree = "<group>";
-		};
-		873BC60716D46A4700B09DEF /* External */ = {
-			isa = PBXGroup;
-			children = (
-				873BC60816D46A4700B09DEF /* Reachability */,
-			);
-			path = External;
-			sourceTree = "<group>";
-		};
-		873BC60816D46A4700B09DEF /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				873BC60916D46A4700B09DEF /* Reachability.h */,
-				873BC60A16D46A4700B09DEF /* Reachability.m */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
-		873BC60B16D46A4700B09DEF /* S3 */ = {
-			isa = PBXGroup;
-			children = (
-				873BC60C16D46A4700B09DEF /* ASINSXMLParserCompat.h */,
-				873BC60D16D46A4700B09DEF /* ASIS3Bucket.h */,
-				873BC60E16D46A4700B09DEF /* ASIS3Bucket.m */,
-				873BC60F16D46A4700B09DEF /* ASIS3BucketObject.h */,
-				873BC61016D46A4700B09DEF /* ASIS3BucketObject.m */,
-				873BC61116D46A4700B09DEF /* ASIS3BucketRequest.h */,
-				873BC61216D46A4700B09DEF /* ASIS3BucketRequest.m */,
-				873BC61316D46A4700B09DEF /* ASIS3ObjectRequest.h */,
-				873BC61416D46A4700B09DEF /* ASIS3ObjectRequest.m */,
-				873BC61516D46A4700B09DEF /* ASIS3Request.h */,
-				873BC61616D46A4700B09DEF /* ASIS3Request.m */,
-				873BC61716D46A4700B09DEF /* ASIS3ServiceRequest.h */,
-				873BC61816D46A4700B09DEF /* ASIS3ServiceRequest.m */,
-			);
-			path = S3;
-			sourceTree = "<group>";
-		};
-		873BC63B16D48E7000B09DEF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				870ECD7116D5C10E004E21A1 /* CUUser.m */,
-				870ECD7216D5C10E004E21A1 /* CUUser.h */,
-				873BC63C16D48E7000B09DEF /* CUAdvertisement.h */,
-				873BC63D16D48E7000B09DEF /* CUAdvertisement.m */,
-				873BC63E16D48E7000B09DEF /* CUCategory.h */,
-				873BC63F16D48E7000B09DEF /* CUCategory.m */,
-				873BC64016D48E7000B09DEF /* CUStatus.h */,
-				873BC64116D48E7000B09DEF /* CUStatus.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		875B146E16CB9B21005C10AE /* CUObjectManagerTest */ = {
-			isa = PBXGroup;
-			children = (
-				875B146F16CB9B44005C10AE /* CUObjectManagerTest.h */,
-				875B147016CB9B44005C10AE /* CUObjectManagerTest.m */,
-			);
-			path = CUObjectManagerTest;
-			sourceTree = "<group>";
-		};
-		87C5AAEE16CA3286001CACA4 = {
-			isa = PBXGroup;
-			children = (
-				87C5AB1D16CA32AA001CACA4 /* CURestkit */,
-				87C5AB0016CA3286001CACA4 /* CURestkitExample */,
-				87C5ABC216CA784A001CACA4 /* CURestkitTest */,
-				87C5AAF916CA3286001CACA4 /* Frameworks */,
-				87C5AAF816CA3286001CACA4 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		87C5AAF816CA3286001CACA4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				87C5AAF716CA3286001CACA4 /* CURestkitExample.app */,
-				87C5ABBE16CA784A001CACA4 /* CURestkitTest.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		87C5AAF916CA3286001CACA4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				873BC63616D46B0E00B09DEF /* libz.dylib */,
-				873BC63016D46AB400B09DEF /* libxml2.dylib */,
-				873BC63416D46ACF00B09DEF /* Security.framework */,
-				873BC63216D46ACA00B09DEF /* QuartzCore.framework */,
-				87C5AB6A16CA6ACE001CACA4 /* SenTestingKit.framework */,
-				87C5AB4016CA33B6001CACA4 /* CFNetwork.framework */,
-				87C5AB3E16CA33B2001CACA4 /* MobileCoreServices.framework */,
-				87C5AB3C16CA33AD001CACA4 /* SystemConfiguration.framework */,
-				87C5AAFA16CA3286001CACA4 /* UIKit.framework */,
-				87C5AAFC16CA3286001CACA4 /* Foundation.framework */,
-				87C5AAFE16CA3286001CACA4 /* CoreGraphics.framework */,
-				87C5AB4F16CA66E5001CACA4 /* SenTestingKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		87C5AB0016CA3286001CACA4 /* CURestkitExample */ = {
-			isa = PBXGroup;
-			children = (
-				87C5AB0916CA3286001CACA4 /* AppDelegate.h */,
-				87C5AB0A16CA3286001CACA4 /* AppDelegate.m */,
-				87C5AB1216CA3286001CACA4 /* ViewController.h */,
-				87C5AB1316CA3286001CACA4 /* ViewController.m */,
-				87C5AB1516CA3286001CACA4 /* ViewController.xib */,
-				87C5AB0116CA3286001CACA4 /* Supporting Files */,
-			);
-			path = CURestkitExample;
-			sourceTree = "<group>";
-		};
-		87C5AB0116CA3286001CACA4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				87C5AB0216CA3286001CACA4 /* CURestkitExample-Info.plist */,
-				87C5AB0316CA3286001CACA4 /* InfoPlist.strings */,
-				87C5AB0616CA3286001CACA4 /* main.m */,
-				87C5AB0816CA3286001CACA4 /* CURestkitExample-Prefix.pch */,
-				87C5AB0C16CA3286001CACA4 /* Default.png */,
-				87C5AB0E16CA3286001CACA4 /* Default@2x.png */,
-				87C5AB1016CA3286001CACA4 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		87C5AB1D16CA32AA001CACA4 /* CURestkit */ = {
-			isa = PBXGroup;
-			children = (
-				87C5AB1E16CA32E5001CACA4 /* Vendor */,
-				87C5AB4216CA3414001CACA4 /* CUJSONMapper.h */,
-				87C5AB4316CA3414001CACA4 /* CUJSONMapper.m */,
-				87C5AB4616CA344B001CACA4 /* CUObjectManager.h */,
-				87C5AB4716CA344B001CACA4 /* CUObjectManager.m */,
-				873BC6A316D4926400B09DEF /* CURestkit.h */,
-			);
-			name = CURestkit;
-			path = ../CURestkit;
-			sourceTree = "<group>";
-		};
-		87C5AB1E16CA32E5001CACA4 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				873BC5E016D46A4700B09DEF /* ASIHTTPRequest */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		87C5ABC216CA784A001CACA4 /* CURestkitTest */ = {
-			isa = PBXGroup;
-			children = (
-				873BC63B16D48E7000B09DEF /* Model */,
-				875B147416CB9E25005C10AE /* SenAsyncTestCase.h */,
-				875B147516CB9E26005C10AE /* SenAsyncTestCase.m */,
-				87C5ABD516CA7A4E001CACA4 /* CUJSONMapperTest */,
-				875B146E16CB9B21005C10AE /* CUObjectManagerTest */,
-				87C5AC1716CA8616001CACA4 /* Data */,
-				87C5ABC316CA784A001CACA4 /* Supporting Files */,
-			);
-			path = CURestkitTest;
-			sourceTree = "<group>";
-		};
-		87C5ABC316CA784A001CACA4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				87C5ABC416CA784A001CACA4 /* CURestkitTest-Info.plist */,
-				87C5ABC516CA784A001CACA4 /* InfoPlist.strings */,
-				87C5ABCB16CA784A001CACA4 /* CURestkitTest-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		87C5ABD516CA7A4E001CACA4 /* CUJSONMapperTest */ = {
-			isa = PBXGroup;
-			children = (
-				87C5ABD616CA7A4E001CACA4 /* CUJSONMapperTest.h */,
-				87C5ABD716CA7A4E001CACA4 /* CUJSONMapperTest.m */,
-			);
-			path = CUJSONMapperTest;
-			sourceTree = "<group>";
-		};
-		87C5AC1716CA8616001CACA4 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				87C5AC1816CA8646001CACA4 /* json.json */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		87C5AAF616CA3286001CACA4 /* CURestkitExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 87C5AB1A16CA3286001CACA4 /* Build configuration list for PBXNativeTarget "CURestkitExample" */;
-			buildPhases = (
-				87C5AAF316CA3286001CACA4 /* Sources */,
-				87C5AAF416CA3286001CACA4 /* Frameworks */,
-				87C5AAF516CA3286001CACA4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CURestkitExample;
-			productName = CURestkitExample;
-			productReference = 87C5AAF716CA3286001CACA4 /* CURestkitExample.app */;
-			productType = "com.apple.product-type.application";
-		};
-		87C5ABBD16CA784A001CACA4 /* CURestkitTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 87C5ABCC16CA784A001CACA4 /* Build configuration list for PBXNativeTarget "CURestkitTest" */;
-			buildPhases = (
-				87C5ABB916CA784A001CACA4 /* Sources */,
-				87C5ABBA16CA784A001CACA4 /* Frameworks */,
-				87C5ABBB16CA784A001CACA4 /* Resources */,
-				87C5ABBC16CA784A001CACA4 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				87C5ABD016CA7900001CACA4 /* PBXTargetDependency */,
-			);
-			name = CURestkitTest;
-			productName = CURestkitTest;
-			productReference = 87C5ABBE16CA784A001CACA4 /* CURestkitTest.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		87C5AAEF16CA3286001CACA4 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = curer;
-			};
-			buildConfigurationList = 87C5AAF216CA3286001CACA4 /* Build configuration list for PBXProject "CURestkitExample" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 87C5AAEE16CA3286001CACA4;
-			productRefGroup = 87C5AAF816CA3286001CACA4 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				87C5AAF616CA3286001CACA4 /* CURestkitExample */,
-				87C5ABBD16CA784A001CACA4 /* CURestkitTest */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		87C5AAF516CA3286001CACA4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				87C5AC4916CA8C4A001CACA4 /* json.json in Resources */,
-				87C5AB0516CA3286001CACA4 /* InfoPlist.strings in Resources */,
-				87C5AB0D16CA3286001CACA4 /* Default.png in Resources */,
-				87C5AB0F16CA3286001CACA4 /* Default@2x.png in Resources */,
-				87C5AB1116CA3286001CACA4 /* Default-568h@2x.png in Resources */,
-				87C5AB1716CA3286001CACA4 /* ViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87C5ABBB16CA784A001CACA4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				87C5ABC716CA784A001CACA4 /* InfoPlist.strings in Resources */,
-				87C5AC1916CA8646001CACA4 /* json.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		87C5ABBC16CA784A001CACA4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		87C5AAF316CA3286001CACA4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				870ECD7416D5C12A004E21A1 /* CUUser.m in Sources */,
-				870ECD7516D5C12A004E21A1 /* CUUser.h in Sources */,
-				873BC6A416D492AD00B09DEF /* CURestkit.h in Sources */,
-				873BC64B16D48EAE00B09DEF /* CUAdvertisement.h in Sources */,
-				873BC64C16D48EAE00B09DEF /* CUAdvertisement.m in Sources */,
-				873BC64D16D48EAE00B09DEF /* CUCategory.h in Sources */,
-				873BC64E16D48EAE00B09DEF /* CUCategory.m in Sources */,
-				873BC64F16D48EAE00B09DEF /* CUStatus.h in Sources */,
-				873BC65016D48EAE00B09DEF /* CUStatus.m in Sources */,
-				87C5AB0716CA3286001CACA4 /* main.m in Sources */,
-				87C5AB0B16CA3286001CACA4 /* AppDelegate.m in Sources */,
-				87C5AB1416CA3286001CACA4 /* ViewController.m in Sources */,
-				87C5AB4416CA3414001CACA4 /* CUJSONMapper.m in Sources */,
-				87C5AB4816CA344B001CACA4 /* CUObjectManager.m in Sources */,
-				873BC61A16D46A4700B09DEF /* ASIDataCompressor.m in Sources */,
-				873BC61B16D46A4700B09DEF /* ASIDataDecompressor.m in Sources */,
-				873BC61C16D46A4700B09DEF /* ASIDownloadCache.m in Sources */,
-				873BC61D16D46A4700B09DEF /* ASIFormDataRequest.m in Sources */,
-				873BC61E16D46A4700B09DEF /* ASIHTTPRequest.m in Sources */,
-				873BC61F16D46A4700B09DEF /* ASIInputStream.m in Sources */,
-				873BC62016D46A4700B09DEF /* ASINetworkQueue.m in Sources */,
-				873BC62116D46A4700B09DEF /* ASIWebPageRequest.m in Sources */,
-				873BC62216D46A4700B09DEF /* ASICloudFilesCDNRequest.m in Sources */,
-				873BC62316D46A4700B09DEF /* ASICloudFilesContainer.m in Sources */,
-				873BC62416D46A4700B09DEF /* ASICloudFilesContainerRequest.m in Sources */,
-				873BC62516D46A4700B09DEF /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
-				873BC62616D46A4700B09DEF /* ASICloudFilesObject.m in Sources */,
-				873BC62716D46A4700B09DEF /* ASICloudFilesObjectRequest.m in Sources */,
-				873BC62816D46A4700B09DEF /* ASICloudFilesRequest.m in Sources */,
-				873BC62916D46A4700B09DEF /* Reachability.m in Sources */,
-				873BC62A16D46A4700B09DEF /* ASIS3Bucket.m in Sources */,
-				873BC62B16D46A4700B09DEF /* ASIS3BucketObject.m in Sources */,
-				873BC62C16D46A4700B09DEF /* ASIS3BucketRequest.m in Sources */,
-				873BC62D16D46A4700B09DEF /* ASIS3ObjectRequest.m in Sources */,
-				873BC62E16D46A4700B09DEF /* ASIS3Request.m in Sources */,
-				873BC62F16D46A4700B09DEF /* ASIS3ServiceRequest.m in Sources */,
-				873BC63A16D46B7700B09DEF /* ASIAuthenticationDialog.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87C5ABB916CA784A001CACA4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				87C5ABD816CA7A4E001CACA4 /* CUJSONMapperTest.m in Sources */,
-				875B147116CB9B44005C10AE /* CUObjectManagerTest.m in Sources */,
-				875B147716CB9E26005C10AE /* SenAsyncTestCase.m in Sources */,
-				873BC64616D48E7000B09DEF /* CUAdvertisement.m in Sources */,
-				873BC64716D48E7000B09DEF /* CUCategory.m in Sources */,
-				873BC64816D48E7000B09DEF /* CUStatus.m in Sources */,
-				870ECD7316D5C10E004E21A1 /* CUUser.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		87C5ABD016CA7900001CACA4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 87C5AAF616CA3286001CACA4 /* CURestkitExample */;
-			targetProxy = 87C5ABCF16CA7900001CACA4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		87C5AB0316CA3286001CACA4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87C5AB0416CA3286001CACA4 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		87C5AB1516CA3286001CACA4 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87C5AB1616CA3286001CACA4 /* en */,
-			);
-			name = ViewController.xib;
-			sourceTree = "<group>";
-		};
-		87C5ABC516CA784A001CACA4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87C5ABC616CA784A001CACA4 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		87C5AB1816CA3286001CACA4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		87C5AB1916CA3286001CACA4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		87C5AB1B16CA3286001CACA4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CURestkitExample/CURestkitExample-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
-				INFOPLIST_FILE = "CURestkitExample/CURestkitExample-Info.plist";
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		87C5AB1C16CA3286001CACA4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CURestkitExample/CURestkitExample-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
-				INFOPLIST_FILE = "CURestkitExample/CURestkitExample-Info.plist";
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		87C5ABCD16CA784A001CACA4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CURestkitExample.app/CURestkitExample";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CURestkitTest/CURestkitTest-Prefix.pch";
-				INFOPLIST_FILE = "CURestkitTest/CURestkitTest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		87C5ABCE16CA784A001CACA4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CURestkitExample.app/CURestkitExample";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CURestkitTest/CURestkitTest-Prefix.pch";
-				INFOPLIST_FILE = "CURestkitTest/CURestkitTest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		87C5AAF216CA3286001CACA4 /* Build configuration list for PBXProject "CURestkitExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				87C5AB1816CA3286001CACA4 /* Debug */,
-				87C5AB1916CA3286001CACA4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		87C5AB1A16CA3286001CACA4 /* Build configuration list for PBXNativeTarget "CURestkitExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				87C5AB1B16CA3286001CACA4 /* Debug */,
-				87C5AB1C16CA3286001CACA4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		87C5ABCC16CA784A001CACA4 /* Build configuration list for PBXNativeTarget "CURestkitTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				87C5ABCD16CA784A001CACA4 /* Debug */,
-				87C5ABCE16CA784A001CACA4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 87C5AAEF16CA3286001CACA4 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>8677E578A912497681F781A2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>A9FC4FEA376C40A7950C533D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>B776887262254015BF98CFB3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Pods.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3A315D1A8A74042B2E42313</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>D7FD15C817E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15DA17E0641C00A33479</string>
+				<string>D7FD15F917E0641C00A33479</string>
+				<string>D7FD15D317E0641C00A33479</string>
+				<string>D7FD15D217E0641C00A33479</string>
+				<string>B776887262254015BF98CFB3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15C917E0641C00A33479</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0500</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>curer</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>D7FD15F117E0641C00A33479</key>
+					<dict>
+						<key>TestTargetID</key>
+						<string>D7FD15D017E0641C00A33479</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>D7FD15CC17E0641C00A33479</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>D7FD15C817E0641C00A33479</string>
+			<key>productRefGroup</key>
+			<string>D7FD15D217E0641C00A33479</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>D7FD15D017E0641C00A33479</string>
+				<string>D7FD15F117E0641C00A33479</string>
+			</array>
+		</dict>
+		<key>D7FD15CC17E0641C00A33479</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D7FD160117E0641C00A33479</string>
+				<string>D7FD160217E0641C00A33479</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D7FD15CD17E0641C00A33479</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D7FD15EB17E0641C00A33479</string>
+				<string>D7FD15E517E0641C00A33479</string>
+				<string>D7FD15E117E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D7FD15CE17E0641C00A33479</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D7FD15D717E0641C00A33479</string>
+				<string>D7FD15D917E0641C00A33479</string>
+				<string>D7FD15D517E0641C00A33479</string>
+				<string>FE030FE7D12D4759A4866637</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D7FD15CF17E0641C00A33479</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D7FD15ED17E0641C00A33479</string>
+				<string>D7FD15DF17E0641C00A33479</string>
+				<string>D7FD15E817E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D7FD15D017E0641C00A33479</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>D7FD160317E0641C00A33479</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8677E578A912497681F781A2</string>
+				<string>D7FD15CD17E0641C00A33479</string>
+				<string>D7FD15CE17E0641C00A33479</string>
+				<string>D7FD15CF17E0641C00A33479</string>
+				<string>A9FC4FEA376C40A7950C533D</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>CURestKitExample</string>
+			<key>productName</key>
+			<string>CURestKitExample</string>
+			<key>productReference</key>
+			<string>D7FD15D117E0641C00A33479</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>D7FD15D117E0641C00A33479</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>CURestKitExample.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>D7FD15D217E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15D117E0641C00A33479</string>
+				<string>D7FD15F217E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15D317E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15D417E0641C00A33479</string>
+				<string>D7FD15D617E0641C00A33479</string>
+				<string>D7FD15D817E0641C00A33479</string>
+				<string>D7FD15F317E0641C00A33479</string>
+				<string>D3A315D1A8A74042B2E42313</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15D417E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>D7FD15D517E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15D417E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15D617E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>D7FD15D717E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15D617E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15D817E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>D7FD15D917E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15D817E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15DA17E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15E317E0641C00A33479</string>
+				<string>D7FD15E417E0641C00A33479</string>
+				<string>D7FD15E617E0641C00A33479</string>
+				<string>D7FD15E917E0641C00A33479</string>
+				<string>D7FD15EA17E0641C00A33479</string>
+				<string>D7FD15EC17E0641C00A33479</string>
+				<string>D7FD15DB17E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>CURestKitExample</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15DB17E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15DC17E0641C00A33479</string>
+				<string>D7FD15DD17E0641C00A33479</string>
+				<string>D7FD15E017E0641C00A33479</string>
+				<string>D7FD15E217E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15DC17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>CURestKitExample-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15DD17E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15DE17E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15DE17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15DF17E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15DD17E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15E017E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15E117E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15E017E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15E217E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>CURestKitExample-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15E317E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15E417E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15E517E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15E417E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15E617E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15E717E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15E717E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15E817E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15E617E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15E917E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>ViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15EA17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>ViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15EB17E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15EA17E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15EC17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15ED17E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15EC17E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15EE17E0641C00A33479</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D7FD160017E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D7FD15EF17E0641C00A33479</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D7FD15F417E0641C00A33479</string>
+				<string>D7FD15F617E0641C00A33479</string>
+				<string>D7FD15F517E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D7FD15F017E0641C00A33479</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D7FD15FE17E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D7FD15F117E0641C00A33479</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>D7FD160617E0641C00A33479</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D7FD15EE17E0641C00A33479</string>
+				<string>D7FD15EF17E0641C00A33479</string>
+				<string>D7FD15F017E0641C00A33479</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>D7FD15F817E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>CURestKitExampleTests</string>
+			<key>productName</key>
+			<string>CURestKitExampleTests</string>
+			<key>productReference</key>
+			<string>D7FD15F217E0641C00A33479</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>D7FD15F217E0641C00A33479</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>CURestKitExampleTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>D7FD15F317E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>D7FD15F417E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15F317E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15F517E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15D417E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15F617E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15D817E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15F717E0641C00A33479</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D7FD15C917E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>D7FD15D017E0641C00A33479</string>
+			<key>remoteInfo</key>
+			<string>CURestKitExample</string>
+		</dict>
+		<key>D7FD15F817E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>D7FD15D017E0641C00A33479</string>
+			<key>targetProxy</key>
+			<string>D7FD15F717E0641C00A33479</string>
+		</dict>
+		<key>D7FD15F917E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15FF17E0641C00A33479</string>
+				<string>D7FD15FA17E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>CURestKitExampleTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15FA17E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15FB17E0641C00A33479</string>
+				<string>D7FD15FC17E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15FB17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>CURestKitExampleTests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15FC17E0641C00A33479</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7FD15FD17E0641C00A33479</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15FD17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD15FE17E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15FC17E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD15FF17E0641C00A33479</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>CURestKitExampleTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7FD160017E0641C00A33479</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7FD15FF17E0641C00A33479</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7FD160117E0641C00A33479</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>ARCHS</key>
+				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D7FD160217E0641C00A33479</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>ARCHS</key>
+				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>D7FD160317E0641C00A33479</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D7FD160417E0641C00A33479</string>
+				<string>D7FD160517E0641C00A33479</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D7FD160417E0641C00A33479</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B776887262254015BF98CFB3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>CURestKitExample/CURestKitExample-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>CURestKitExample/CURestKitExample-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D7FD160517E0641C00A33479</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B776887262254015BF98CFB3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>CURestKitExample/CURestKitExample-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>CURestKitExample/CURestKitExample-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>D7FD160617E0641C00A33479</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D7FD160717E0641C00A33479</string>
+				<string>D7FD160817E0641C00A33479</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D7FD160717E0641C00A33479</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ARCHS</key>
+				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/CURestKitExample.app/CURestKitExample</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>CURestKitExample/CURestKitExample-Prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>CURestKitExampleTests/CURestKitExampleTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D7FD160817E0641C00A33479</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ARCHS</key>
+				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/CURestKitExample.app/CURestKitExample</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>CURestKitExample/CURestKitExample-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>CURestKitExampleTests/CURestKitExampleTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>FE030FE7D12D4759A4866637</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3A315D1A8A74042B2E42313</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>D7FD15C917E0641C00A33479</string>
+</dict>
+</plist>

@@ -47,8 +47,7 @@
 
 - (void)addValueCover:(NSString *)properName procblock:(id (^)(id))block
 {
-    [[block copy] autorelease];
-    [self.valueCoverblockDictionary setObject:block forKey:properName];
+    [self.valueCoverblockDictionary setObject:[block copy] forKey:properName];
 }
 
 - (void)addRelationship:(CUJSONMapper *)relationshipMapper

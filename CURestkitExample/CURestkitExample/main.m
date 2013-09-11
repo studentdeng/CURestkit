@@ -1,16 +1,16 @@
 //
 //  main.m
-//  CURestkitExample
+//  CURestKitExample
 //
-//  Created by yg curer on 13-2-12.
-//  Copyright (c) 2013年 curer. All rights reserved.
+//  Created by curer on 9/11/13.
+//  Copyright (c) 2013 curer. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char * argv[])
 {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));

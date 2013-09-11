@@ -1,15 +1,13 @@
 //
 //  ViewController.h
-//  CURestkitExample
+//  CURestKitExample
 //
-//  Created by yg curer on 13-2-12.
-//  Copyright (c) 2013年 curer. All rights reserved.
+//  Created by curer on 9/11/13.
+//  Copyright (c) 2013 curer. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-- (IBAction)refresh:(id)sender;
-- (IBAction)refreshNoObject:(id)sender;
 
 @end
