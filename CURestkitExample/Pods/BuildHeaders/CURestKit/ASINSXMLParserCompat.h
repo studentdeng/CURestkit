@@ -1,1 +1,0 @@
-../../CURestKit/CURestkit/Vendor/ASIHTTPRequest/S3/ASINSXMLParserCompat.h

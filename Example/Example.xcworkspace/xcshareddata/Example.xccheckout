@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AFB3BB3E-07DF-401C-BD94-44B2376E8C19</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Example</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8080B3E0-2E89-4675-867B-1CA97394FC6C</key>
+		<string>https://github.com/studentdeng/CURestkit.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Example/Example.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8080B3E0-2E89-4675-867B-1CA97394FC6C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/studentdeng/CURestkit.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8080B3E0-2E89-4675-867B-1CA97394FC6C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8080B3E0-2E89-4675-867B-1CA97394FC6C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CURestkit</string>
+		</dict>
+	</array>
+</dict>
+</plist>
