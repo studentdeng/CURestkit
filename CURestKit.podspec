@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
-  s.name         = "CURestKit"
+  s.name         = "CURestkit"
   s.version      = "1.0.2"
-  s.summary      = "A short description of CURestKit."
+  s.summary      = "A short description of CURestkit."
 
   s.description  = <<-DESC
-                   A longer description of CURestKit in Markdown format.
+                   A longer description of CURestkit in Markdown format.
                    DESC
 
   s.homepage     = "https://github.com/studentdeng/CURestkit"
