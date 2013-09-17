@@ -262,29 +262,42 @@
     __weak ASIHTTPRequest *blockRequest = request;
 
     [request setCompletionBlock:^{
-        if (![blockSelf parseHTTPStatusCode:blockRequest]) {
-            NSLog(@"%@ %@", HTTP_STATUS_CODE_FAILED, [blockRequest responseString]);
-            errorBlock(blockRequest, HTTP_STATUS_CODE_FAILED);
+        
+        __strong CUObjectManager *strongSelf = blockSelf;
+        __strong ASIHTTPRequest *strongRequest = blockRequest;
+        if (strongRequest == nil || strongSelf == nil) {
+            return;
+        }
+        
+        if (![strongSelf parseHTTPStatusCode:strongRequest]) {
+            NSLog(@"%@ %@", HTTP_STATUS_CODE_FAILED, [strongRequest responseString]);
+            errorBlock(strongRequest, HTTP_STATUS_CODE_FAILED);
             
             return;
         }
         
         NSError *error = nil;
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:blockRequest.responseData
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:strongRequest.responseData
                                                         options:kNilOptions
                                                           error:&error];
         if (error == nil) {
-            success(blockRequest, jsonObject);
+            success(strongRequest, jsonObject);
         }
         else
         {
-            errorBlock(blockRequest, PARSE_JSON_FAILED);
+            errorBlock(strongRequest, PARSE_JSON_FAILED);
         }
     }];
     
     [request setFailedBlock:^{
-        NSLog(@"%@", [[blockRequest error] localizedDescription]);
-        errorBlock(blockRequest, [[blockRequest error] localizedDescription]);
+        __strong ASIHTTPRequest *strongRequest = blockRequest;
+        
+        if (strongRequest == nil) {
+            return;
+        }
+        
+        NSLog(@"%@", [[strongRequest error] localizedDescription]);
+        errorBlock(strongRequest, [[strongRequest error] localizedDescription]);
     }];
 }
 
@@ -302,11 +315,16 @@
     [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
                                           andPassword:self.HTTPBasicAuthPassword];
     
-    __block CUObjectManager *blockSelf = self;
+    __weak CUObjectManager *blockSelf = self;
     
     [self setJSONResponseWithRequest:request
                              success:^(ASIHTTPRequest *ASIRequest, id json) {
-                                 id objects = [CUObjectManager parseObjects:blockSelf withJSON:json at:path];
+                                 __strong CUObjectManager *strongSelf = blockSelf;
+                                 if (strongSelf == nil) {
+                                     return;
+                                 }
+                                 
+                                 id objects = [CUObjectManager parseObjects:strongSelf withJSON:json at:path];
                                  if (objects != nil) {
                                      success(request, objects);
                                  }
