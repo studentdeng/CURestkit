@@ -26,11 +26,6 @@ static NSDateFormatter *s_format = nil;
     [objectMapping addRelationship:[User getObjectMapping]
                       withJSONName:@"user"
                       atPropername:@"user"];
-    /*
-    [objectMapping addValueCover:@"isFavorited"
-                       procblock:^id(id value) {
-                           return [NSNumber numberWithBool:[value boolValue]];
-                       }];*/
     
     [objectMapping addValueCover:@"createdAt"
                        procblock:^id(id value) {
