@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+- (IBAction)jsonDic:(id)sender;
+- (IBAction)jsonArray:(id)sender;
 
 @end
