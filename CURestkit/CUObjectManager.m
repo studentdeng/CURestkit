@@ -109,8 +109,10 @@
                                                      params:parameters];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
     
     [self setJSONResponseWithRequest:request
                              success:success
