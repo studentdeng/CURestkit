@@ -127,9 +127,10 @@
                              error:(void (^)(ASIHTTPRequest *ASIRequest, NSString *errorMsg))errorBlock
 {
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
     
     [self setJSONResponseWithRequest:request
                              success:^(ASIHTTPRequest *ASIRequest, id json) {
@@ -155,8 +156,11 @@
                                                      params:nil];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
+    
     postBlock(request);
     [self setJSONResponseWithRequest:request
                              success:success
@@ -175,8 +179,10 @@
                                                      params:nil];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
     
     for (NSString *key in parameters) {
         [request addPostValue:[parameters objectForKey:key] forKey:key];
@@ -199,8 +205,11 @@
                                                      params:nil];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
+    
     postBlock(request);
     
     __block CUObjectManager *blockSelf = self;
@@ -229,8 +238,10 @@
                                                      params:nil];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
     
     for (NSString *key in parameters) {
         [request addPostValue:[parameters objectForKey:key] forKey:key];
@@ -262,7 +273,7 @@
 {
     __weak CUObjectManager *blockSelf = self;
     __weak ASIHTTPRequest *blockRequest = request;
-
+    
     [request setCompletionBlock:^{
         
         __strong CUObjectManager *strongSelf = blockSelf;
@@ -313,9 +324,10 @@
                                                      params:parameters];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
-    [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
-                                          andPassword:self.HTTPBasicAuthPassword];
+    if (self.HTTPBasicAuthUsername.length > 0) {
+        [request addBasicAuthenticationHeaderWithUsername:self.HTTPBasicAuthUsername
+                                              andPassword:self.HTTPBasicAuthPassword];
+    }
     
     __weak CUObjectManager *blockSelf = self;
     
@@ -422,7 +434,7 @@
 		{
             param = [NSString stringWithFormat:@"%@", param];
 		}
-
+        
 		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [param URLEncodedString]]];
 	}
 	
