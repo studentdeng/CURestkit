@@ -6,7 +6,7 @@ ARC support
 #install
 
 	platform :ios, '5.0'
-	pod 'CURestKit', :git => 'https://github.com/studentdeng/CURestkit'
+	pod 'CURestKit'
 
 #description
 

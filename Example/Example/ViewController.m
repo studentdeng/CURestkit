@@ -11,33 +11,46 @@
 #import "Status.h"
 #import <CURestKit/CURestkit.h>
 
-#define SINA_TOKEN  @""
+#define TIMELINE    @"demo_data/weibo_timeline.json"
+#define USER        @"demo_data/weibo_usershow.json"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) CUObjectManager *manager;
-@property (nonatomic, strong) NSMutableArray *requestList;
+@property (nonatomic, strong) NSMutableArray *dataList;
+@property (nonatomic, strong) NSMutableDictionary *userDictionary;
 
 @end
 
 @implementation ViewController
 
+- (void)dealloc
+{
+    [self.dataList cancelRequest];
+    [self.userDictionary cancelRequest];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-  
-    self.requestList = [NSMutableArray array];
-    self.manager = [[CUObjectManager alloc] init];
+    
+    self.dataList = [NSMutableArray array];
+    self.userDictionary = [NSMutableDictionary dictionary];
+    
+    //setup ObjectManager
+    [CUObjectManager sharedInstance].baseURLString = @"http://112.124.107.63/";
+    
+    [[CUObjectManager sharedInstance] registerMapper:[Status getObjectMapping]
+                                        atServerPath:TIMELINE
+                                         andJSONPath:@"statuses"];
+    
+    [[CUObjectManager sharedInstance] registerMapper:[User getObjectMapping]
+                                        atServerPath:USER
+                                         andJSONPath:@""];
     
     [self fetchList];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)parseJSONFileDic
 {
@@ -76,24 +89,21 @@
 
 - (void)fetchList
 {
-    self.manager.baseURLString = @"http://112.124.107.63/";
-    
-    [self.manager registerMapper:[Status getObjectMapping]
-               atServerPath:@"demo_data/test_weibo_timeline.json"
-                andJSONPath:@"statuses"];
-    
-    ASIHTTPRequest *request = 
-    [self.manager getObjectsRequestAtPath:@"demo_data/test_weibo_timeline.json"
-                          parameters:nil
-                             success:^(ASIHTTPRequest *ASIRequest, NSArray *objects) {
-                                 NSLog(@"%@", objects);
-                             } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
-                                 
-                             }];
-    
-    [request startAsynchronous];
-  
-    [self.requestList addObject:request];
+    [self.dataList fetchObjectsFromPath:TIMELINE
+                             parameters:nil
+                                success:^(NSArray *array) {
+                                    NSLog(@"%@", array);
+                                } error:^(int statusCode, NSString *responseString) {
+                                    NSLog(@"%@", self.dataList.errorMessage);
+                                }];
+     
+    [self.userDictionary fetchDataFromPath:USER
+                                parameters:nil
+                                   success:^(NSDictionary *dictionary) {
+                                       NSLog(@"%@", dictionary);
+                                   } error:^(int statusCode, NSString *responseString) {
+                                       NSLog(@"error");
+                                   }];
 }
 
 #pragma mark - action
