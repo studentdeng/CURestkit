@@ -10,6 +10,7 @@
 #import "CUJSONMapper.h"
 #import "CUObjectManager.h"
 
-
+#import "NSMutableArray+CURestKit.h"
+#import "NSMutableDictionary+CURestKit.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"

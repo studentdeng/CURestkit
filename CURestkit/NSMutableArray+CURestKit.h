@@ -10,10 +10,14 @@
 
 @interface NSMutableArray (CURestKit)
 
-- (void)fetchDataFromPath:(NSString *)path
-                  success:(void (^)(void))successBlock
-                    error:(void (^)(int statusCode, NSString *responseString))errorBlock;
+//GET
+- (void)fetchObjectsFromPath:(NSString *)path
+                  parameters:(NSDictionary *)parameters
+                     success:(void (^)(NSArray *array))successBlock
+                       error:(void (^)(int statusCode, NSString *responseString))errorBlock;
 
 - (void)cancelRequest;
+
+- (NSString *)errorMessage;
 
 @end

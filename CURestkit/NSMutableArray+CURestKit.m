@@ -5,47 +5,52 @@
 //  Created by curer on 3/7/14.
 //
 //
+
 #import "objc/runtime.h"
-#import "NSMutableArray+CURestKit.h"
 #import "CURestkit.h"
+#import "NSMutableArray+CURestKit.h"
 
 static char requestKey;
 static char requestErrorKey;
 
 @implementation NSMutableArray (CURestKit)
 
-- (void)fetchDataFromPath:(NSString *)path
-                  success:(void (^)(void))successBlock
-                    error:(void (^)(int statusCode, NSString *responseString))errorBlock
+- (void)fetchObjectsFromPath:(NSString *)path
+                  parameters:(NSDictionary *)parameters
+                     success:(void (^)(NSArray *array))successBlock
+                       error:(void (^)(int statusCode, NSString *responseString))errorBlock
 {
-    __block __weak typeof(self)selfWeak = self;
+    __block __weak NSMutableArray *wself = self;
     
     [self cancelRequest];
-    ASIHTTPRequest *request = [[CUObjectManager sharedInstance] getJSONRequestAtPath:path
-                                                                          parameters:nil
+    ASIHTTPRequest *request = [[CUObjectManager sharedInstance] getObjectsRequestAtPath:path
+                                                                          parameters:parameters
                                                                              success:^(ASIHTTPRequest *ASIRequest, id json) {
-                                                                                 
-                                                                                 [selfWeak removeAllObjects];
                                                                                  
                                                                                  if (![json isKindOfClass:[NSArray class]]) {
                                                                                      
-                                                                                     [selfWeak setupErrorMessage:@"json Data is not NSArray"];
+                                                                                     [wself setupErrorMessage:@"json Data is not NSArray"];
                                                                                      
                                                                                      errorBlock(ASIRequest.responseStatusCode, ASIRequest.responseString);
+                                                                                     
+                                                                                     return;
                                                                                  }
                                                                                  
-                                                                                 [selfWeak addObjectsFromArray:json];
+                                                                                 [wself removeAllObjects];
+                                                                                 [wself addObjectsFromArray:json];
                                                                                  
-                                                                                 successBlock();
+                                                                                 successBlock(self);
                                                                                  
                                                                              } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
                                                                                  
-                                                                                 [selfWeak setupErrorMessage:errorMsg];
+                                                                                 [wself setupErrorMessage:errorMsg];
                                                                                  
                                                                                  errorBlock(ASIRequest.responseStatusCode, ASIRequest.responseString);
                                                                              }];
     
     objc_setAssociatedObject(self, &requestKey, request, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    [request startAsynchronous];
 }
 
 - (void)cancelRequest
@@ -62,7 +67,7 @@ static char requestErrorKey;
 
 - (void)clearError
 {
-    NSString *errorString = objc_getAssociatedObject(self, &requestErrorKey);
+    NSString *errorString = [self errorMessage];
     if (errorString)
     {
         objc_setAssociatedObject(self, &requestErrorKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -76,6 +81,9 @@ static char requestErrorKey;
     objc_setAssociatedObject(self, &requestErrorKey, errorMessage, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-
+- (NSString *)errorMessage
+{
+    return objc_getAssociatedObject(self, &requestErrorKey);
+}
 
 @end
