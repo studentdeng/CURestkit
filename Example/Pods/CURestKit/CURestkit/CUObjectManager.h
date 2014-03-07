@@ -25,6 +25,8 @@
                           path:(NSString *)path
                         params:(NSDictionary *)params;
 
++ (instancetype)sharedInstance;
+
 #pragma mark - common GET
 
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)url

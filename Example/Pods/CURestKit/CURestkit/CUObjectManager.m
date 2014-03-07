@@ -38,6 +38,16 @@
 
 @implementation CUObjectManager
 
++ (instancetype)sharedInstance {
+    static CUObjectManager *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [CUObjectManager new];
+    });
+    
+    return _sharedInstance;
+}
+
 - (void)dealloc
 {
     self.mapperAtServerPathDictionary = nil;
