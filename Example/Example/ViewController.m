@@ -15,6 +15,9 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) CUObjectManager *manager;
+@property (nonatomic, strong) NSMutableArray *requestList;
+
 @end
 
 @implementation ViewController
@@ -23,6 +26,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+  
+    self.requestList = [NSMutableArray array];
+    self.manager = [[CUObjectManager alloc] init];
     
     [self fetchList];
 }
@@ -70,25 +76,24 @@
 
 - (void)fetchList
 {
-    CUObjectManager *manager = [[CUObjectManager alloc] init];
-    manager.baseURLString = @"https://api.weibo.com/2/";
+    self.manager.baseURLString = @"http://112.124.107.63/";
     
-    [manager registerMapper:[Status getObjectMapping]
-               atServerPath:@"statuses/public_timeline.json"
+    [self.manager registerMapper:[Status getObjectMapping]
+               atServerPath:@"demo_data/test_weibo_timeline.json"
                 andJSONPath:@"statuses"];
     
     ASIHTTPRequest *request = 
-    [manager getObjectsRequestAtPath:@"statuses/public_timeline.json"
-                          parameters:@{
-                                @"access_token" : SINA_TOKEN
-                            }
+    [self.manager getObjectsRequestAtPath:@"demo_data/test_weibo_timeline.json"
+                          parameters:nil
                              success:^(ASIHTTPRequest *ASIRequest, NSArray *objects) {
                                  NSLog(@"%@", objects);
                              } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
                                  
                              }];
     
-    [request startSynchronous];
+    [request startAsynchronous];
+  
+    [self.requestList addObject:request];
 }
 
 #pragma mark - action
