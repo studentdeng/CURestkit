@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0460"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8511ED7A47A04FA0BFC21F2E"
+               BlueprintIdentifier = "418CB932A00D40C38522027A"
                BuildableName = "libPods-CURestKit.a"
                BlueprintName = "Pods-CURestKit"
                ReferencedContainer = "container:Pods.xcodeproj">

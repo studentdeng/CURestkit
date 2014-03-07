@@ -2,24 +2,26 @@ PODS:
   - ASIHTTPRequest (1.8.1):
     - ASIHTTPRequest/ASIWebPageRequest
     - ASIHTTPRequest/CloudFiles
+    - ASIHTTPRequest/Core
     - ASIHTTPRequest/S3
-    - Reachability
   - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
-    - Reachability
+    - ASIHTTPRequest/Core
   - ASIHTTPRequest/CloudFiles (1.8.1):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.1):
     - Reachability
   - ASIHTTPRequest/S3 (1.8.1):
-    - Reachability
-  - CURestKit (1.0.2):
+    - ASIHTTPRequest/Core
+  - CURestKit (1.0.3):
     - ASIHTTPRequest
   - Reachability (3.1.1)
 
 DEPENDENCIES:
-  - CURestKit (~> 1.0.2)
+  - CURestKit
 
 SPEC CHECKSUMS:
-  ASIHTTPRequest: 0c9cb42c3c8dbe206493f89ce3f2834d550d3c00
-  CURestKit: 743f29fe2fb0237e34435c460245e90ece43fcae
-  Reachability: 2be6bc2fd2bd31d97f5db33e75e4b29c79e95883
+  ASIHTTPRequest: e801e115dc0c1892cea2b752d7f79052b05202d2
+  CURestKit: 50da79f33dd901ff279d6da36d2ec95b2bff54c1
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
 
-COCOAPODS: 0.24.0
+COCOAPODS: 0.29.0

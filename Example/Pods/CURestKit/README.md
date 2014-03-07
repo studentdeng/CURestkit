@@ -5,9 +5,8 @@ ARC support
 
 #install
 
-    platform :ios, '5.0'
-
-    pod 'CURestKit', '~>1.0.2' 
+	platform :ios, '5.0'
+	pod 'CURestKit', :git => 'https://github.com/studentdeng/CURestkit'
 
 #description
 
@@ -74,23 +73,63 @@ I want to make it easy to use. because I don't like coreData and so many class :
 
 #example for create request and parse json result
 
-	CUObjectManager *manager = [[[CUObjectManager alloc] init] autorelease];
-    manager.HTTPClient = client;
+```objc
+- (void)parseJSONFileDic
+{
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json1"
+                                                                                  ofType:@"json"]];
     
-    [manager registerMapper:[CUStatus getObjectMapping]
-               atServerPath:@"statuses/user_timeline" andJSONPath:@""];
+    NSError *error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                    options:kNilOptions
+                                                      error:&error];
     
-    [manager getObjectsAtPath:@"statuses/user_timeline"
-                   parameters:@{@"user_id": @"1"}
-                      success:^(AFJSONRequestOperation *jsonOperation, NSArray *objects) {
-                          for (CUStatus *item in objects) {
-                              STAssertEqualObjects([item class], [CUStatus class], @"");
-                              NSLog(@"%@", item);
-                          }
-                      } error:^(AFJSONRequestOperation *jsonOperation, NSString *errorMsg) {
-                          NSLog(@"error = %@, msg = %@", jsonOperation.error, errorMsg);
-                          STFail(@"network error or parse error");
-                      }];
+    CUJSONMapper *mapper = [Status getObjectMapping];
+    NSDictionary *statusDic = [jsonObject[@"statuses"] lastObject];
     
+    Status *status = [mapper objectFromJSONDictionary:statusDic];
     
-    [self waitForTimeout:10.0f];
+    NSLog(@"%@",status);
+}
+
+- (void)parseJSONFileArray
+{
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json1"
+                                                                                  ofType:@"json"]];
+    
+    NSError *error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                    options:kNilOptions
+                                                      error:&error];
+    
+    CUJSONMapper *mapper = [Status getObjectMapping];
+    
+    NSArray *list = [mapper objectfromJSONArray:jsonObject[@"statuses"]];
+    
+    NSLog(@"%@", list);
+}
+
+- (void)fetchList
+{
+    CUObjectManager *manager = [[CUObjectManager alloc] init];
+    manager.baseURLString = @"https://api.weibo.com/2/";
+    
+    [manager registerMapper:[Status getObjectMapping]
+               atServerPath:@"statuses/public_timeline.json"
+                andJSONPath:@"statuses"];
+    
+    ASIHTTPRequest *request = 
+    [manager getObjectsRequestAtPath:@"statuses/public_timeline.json"
+                          parameters:@{
+                                @"access_token" : SINA_TOKEN
+                            }
+                             success:^(ASIHTTPRequest *ASIRequest, NSArray *objects) {
+                                 NSLog(@"%@", objects);
+                             } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
+                                 
+                             }];
+    
+    [request startSynchronous];
+}
+
+```
